@@ -1,0 +1,60 @@
+/* Basic styling for the sidebar */
+.sidebar {
+  width: 60px; /* Initial width when closed */
+  height: 100vh; /* Full height */
+  background-color: #343a40; /* Background color */
+  color: #fff; /* Text color */
+  transition: width 0.3s; /* Smooth transition for width change */
+  overflow: hidden; /* Hide overflow content */
+  position: fixed; /* Fixed position */
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+}
+
+.sidebar.open {
+  width: 200px; /* Width when opened */
+}
+
+.sidebar-header {
+  padding: 20px;
+  font-size: 20px;
+  text-align: center; /* Center the logo text */
+  width: 100%; /* Full width for header */
+}
+
+.sidebar-menu {
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+  width: 100%; /* Full width for menu */
+}
+
+.sidebar-menu li {
+  padding: 10px; /* Padding for menu items */
+  border-bottom: 1px solid #495057; /* Border between items */
+}
+
+.sidebar-menu .menu-item {
+  display: flex; /* Use flexbox for layout */
+  align-items: center; /* Center items vertically */
+}
+
+.sidebar-menu img {
+  width: 30px; /* Image width */
+  height: 30px; /* Image height */
+}
+
+.sidebar-menu a {
+  color: #fff; /* Link color */
+  text-decoration: none; /* Remove underline */
+  margin-left: 10px; /* Space between image and text */
+  font-size: 16px; /* Font size for text */
+  display: none; /* Hide links by default */
+}
+
+.sidebar.open .sidebar-menu a {
+  display: inline-block; /* Display links when sidebar is open */
+}

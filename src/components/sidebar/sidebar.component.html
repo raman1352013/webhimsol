@@ -1,1 +1,16 @@
-<p>sidebar works!</p>
+<div class="sidebar" [class.open]="isSidebarOpen"  (mouseover)="openSidebar()" (mouseleave)="closeSidebar()">
+    <div class="sidebar-header">
+      <h3>LOGO</h3>
+    </div>
+    <ul class="sidebar-menu">
+      <li  *ngFor="let item of menuList">
+        <span class="menu-item">
+          <img [src]="getImagePath(item.link)" alt="" />
+        <a href="{{ item.link }}"  *ngIf="isSidebarOpen">{{ item.label }}</a>
+      </span>
+      </li>
+    </ul>
+
+
+  </div>
+  
