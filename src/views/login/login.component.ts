@@ -13,6 +13,7 @@ export class LoginComponent {
   constructor(private router: Router,private routeService:RouteServiceService) {}
 
   goToPage(pagename:any){
+    console.log(pagename)
     this.routeService.goToPage(pagename);
    
    }
