@@ -6,38 +6,35 @@
             class="img-fluid" alt="Sample image">
         </div>
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-          <form>
+          <form [formGroup]="loginForm" (ngSubmit)="authUser()">
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="floatingInput" placeholder="">
+              <input type="email" class="form-control" formControlName="username" maxlength="10" id="floatingInput" placeholder="Mobile No.">
               <label for="floatingInput">Mobile No.</label>
-            </div>
-            <div class="form-floating">
-              <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-              <label for="floatingPassword">Password</label>
-            </div>
-  
-            
-  
-  
-            <div class="d-flex justify-content-between align-items-center">
-              <!-- Checkbox -->
-              <div class="form-check mb-0">
-                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                <label class="form-check-label" for="form2Example3">
-                  Remember me
-                </label>
+              <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="text-danger">
+                <div *ngIf="loginForm.get('username')?.errors?.['required']">Username is required.</div>
+                <div *ngIf="loginForm.get('username')?.errors?.['pattern']">Invalid Mobile format.</div>
+                <div *ngIf="loginForm.get('username')?.errors?.['maxlength']">Username cannot exceed 10 characters.</div>
               </div>
-              <a href="#!" class="text-body">Forgot password?</a>
             </div>
-  
+            
+            <div class="form-floating">
+              <input type="password" class="form-control" formControlName="password" maxlength="20" id="floatingPassword" placeholder="Password">
+              <label for="floatingPassword">Password</label>
+              <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger">
+                <div *ngIf="loginForm.get('password')?.errors?.['required']">Password is required.</div>
+                <div *ngIf="loginForm.get('password')?.errors?.['maxlength']">Password cannot exceed 20 characters.</div>
+              </div>
+            </div>
+          
             <div class="text-center text-lg-start mt-4 pt-2">
-              <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
-                style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-              <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a 
-                  class="link-danger" (click)="goToPage('signup')">Register</a></p>
+              <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
             </div>
-  
           </form>
+          
+          
+
+          
+          
         </div>
       </div>
     </div>
