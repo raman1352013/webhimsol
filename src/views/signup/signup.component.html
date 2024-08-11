@@ -1,12 +1,12 @@
 <section class="vh-100">
-    <div class="container-fluid h-custom">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-md-9 col-lg-6 col-xl-5">
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-            class="img-fluid" alt="Sample image">
-        </div>
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-          <form>
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-md-9 col-lg-6 col-xl-5">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid"
+          alt="Sample image">
+      </div>
+      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+        <!-- <form>
             <div class="row">
               <div class="col-md-6">
                 <div class="form-floating mb-3">
@@ -31,10 +31,7 @@
               <input type="email" class="form-control" id="floatingInput" placeholder="">
               <label for="floatingInput">Mobile No.</label>
             </div>
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="floatingOTP" placeholder="OTP">
-              <label for="floatingPassword">OTP</label>
-            </div>
+           
             <div class="form-floating mb-3">
               <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
               <label for="floatingPassword">Password</label>
@@ -49,9 +46,70 @@
               
             </div>
   
-          </form>
-        </div>
+          </form> -->
+
+
+        <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
+            <label for="floatingInput"> First Name</label>
+            <div *ngIf="signupForm.get('firstName')?.invalid && signupForm.get('firstName')?.touched"
+              class="text-danger">
+              First name is required.
+            </div>
+
+
+          </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" formControlName="lastName"   placeholder="Last Name">
+            <label for="floatingInput"> Last Name</label>
+            <div *ngIf="signupForm.get('lastName')?.invalid && signupForm.get('lastName')?.touched" class="text-danger">
+              Last name is required.
+            </div>
+
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" formControlName="mobile" placeholder="Mobile No.">
+            <label for="floatingInput">Mobile No.</label>
+            <div *ngIf="signupForm.get('mobile')?.invalid && signupForm.get('mobile')?.touched" class="text-danger">
+              <div *ngIf="signupForm.get('mobile')?.errors?.['required']">Mobile number is required.</div>
+              <div *ngIf="signupForm.get('mobile')?.errors?.['pattern']">Invalid mobile format.</div>
+            </div>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" formControlName="password" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+            <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="text-danger">
+              <div *ngIf="signupForm.get('password')?.errors?.['required']">Password is required.</div>
+              <div *ngIf="signupForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters.
+              </div>
+            </div>
+          </div>
+
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" formControlName="confirmPassword"
+              placeholder="Confirm Password">
+            <label for="floatingPassword">Confirm Password</label>
+            <div *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched"
+              class="text-danger">
+              <div *ngIf="signupForm.get('confirmPassword')?.errors?.['required']">Confirm password is required.</div>
+            </div>
+            <div *ngIf="signupForm.errors?.['mismatch']" class="text-danger">
+              Passwords do not match.
+            </div>
+          </div>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg" style="padding-left:   
+       2.5rem; padding-right: 2.5rem;" [disabled]="signupForm.invalid">  
+
+              Sign up
+            </button>
+          </div>
+        </form>
       </div>
     </div>
+  </div>
 
-  </section>
+</section>
