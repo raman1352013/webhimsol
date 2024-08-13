@@ -6,13 +6,16 @@ import { WorldcountComponent } from '../../components/worldcount/worldcount.comp
 import { RouteServiceService } from '../../services/route-service.service';
 import { AboutusComponent } from "../aboutus/aboutus.component";
 import { ContactusComponent } from "../contactus/contactus.component";
+import { FooterComponent } from "../../components/footer/footer.component";
+import { WhatwedoComponent } from "../whatwedo/whatwedo.component";
+import { GalleryComponent } from "../gallery/gallery.component";
 
 
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, BanerComponent, WorldcountComponent, AboutusComponent, ContactusComponent],
+  imports: [RouterOutlet, HeaderComponent, BanerComponent, WorldcountComponent, AboutusComponent, ContactusComponent, FooterComponent, WhatwedoComponent, GalleryComponent],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'
 })

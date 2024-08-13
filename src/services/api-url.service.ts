@@ -11,7 +11,7 @@ export class ApiUrlService implements OnInit {
   //public readonly POST_LOGIN = this.BASE_URL + "hpvig-users/api/user/v1/login";
 
  private readonly BASE_URL_PDMS = 'https://api.techembryo.com/hpceo-pdms/';
-  private readonly BASE_URL_USERS = 'http://sandbox.techembryo.com/users/';
+  private readonly BASE_URL_USERS = 'https://sandbox.techembryo.com/users/';
  private readonly BASE_URL_MASTER = 'https://api.techembryo.com/hpceo-master/';
 
   
@@ -66,7 +66,7 @@ export class ApiUrlService implements OnInit {
 
   public readonly POST_REGISTER_USER =
     this.BASE_URL_USERS + 'api/user/v1/register';
-
+   
   public readonly POST_RESET_PASSWORD_USER =
     this.BASE_URL_USERS + 'api/user/v1/reset-password';
 

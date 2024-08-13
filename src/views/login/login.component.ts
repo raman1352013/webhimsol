@@ -5,6 +5,7 @@ import { RouteServiceService } from '../../services/route-service.service';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
  import { AuthService } from '../../services/auth.service';
+ import { NgxSpinnerService, NgxSpinnerModule } from 'ngx-spinner';
 // import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 // import { UtilService } from '../../services/util.service';
 
@@ -13,7 +14,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule,FormsModule, ReactiveFormsModule,],
+  imports: [CommonModule,FormsModule, ReactiveFormsModule, NgxSpinnerModule,],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -29,6 +30,7 @@ required: any;
     private router: Router,
     private routeService:RouteServiceService,
     private authService:AuthService,
+    private spinner: NgxSpinnerService
   
     ) {
     this.loginForm = this.fb.group({
@@ -38,10 +40,17 @@ required: any;
   }
 
   authUser() {
+    
     console.log('auth clicked');
     console.log(this.loginForm);
   
     if (this.loginForm.valid) {
+      this.spinner.show(undefined, {
+        type: 'ball-scale-ripple-multiple', // Choose from available types like 'ball-clip-rotate', 'square-jelly-box', etc.
+        size: 'medium',
+        bdColor: 'rgba(0, 0, 0, 0.7)',
+        color: '#00ff00'
+      });
       const { username, password } = this.loginForm.value; // Correctly extract form values
   
      
@@ -63,13 +72,18 @@ required: any;
               sessionStorage.setItem('userDetail', JSON.stringify(response.userDetail));
               
               // Navigate to dashboard or handle successful login here
+              this.spinner.hide();
             } else {
+              setTimeout(() => {
+                this.spinner.hide();
+              }, 1000);
               // this.utils.showError(response.message);
             }
           }
         },
         (error: any) => {
           console.log('API Error:', error);
+          this.spinner.hide();
           // this.utils.overlay('h');
         //   this.utils.showError('Login failed. Please try again.'); // Show a user-friendly error message
         // }
@@ -78,6 +92,8 @@ required: any;
     } else {
       this.loginForm.markAllAsTouched(); // Trigger validation messages
     }
+
+   
   }
   
   

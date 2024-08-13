@@ -1,0 +1,145 @@
+/* footer section start */
+
+.footer_section {
+    width: 100%;
+    float: left;
+    background-color: #181818;
+    height: auto;
+    padding-bottom: 50px;
+}
+
+.footer_section_2 {
+    width: 100%;
+    float: left;
+}
+
+.useful_text {
+    width: 100%;
+    font-size: 24px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.lorem_text {
+    width: 100%;
+    float: left;
+    font-size: 16px;
+    color: #ffffff;
+    margin: 0px;
+}
+
+.location_text {
+    width: 100%;
+    float: left;
+}
+
+.location_text a {
+    width: 100%;
+    float: left;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.location_text a:hover {
+    color: #85a900;
+}
+
+.footer_menu {
+    width: 100%;
+    float: left;
+}
+
+.footer_menu ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.footer_menu li a {
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.footer_menu li.active a {
+    color: #85a900;
+}
+
+.footer_menu li a:hover {
+    color: #85a900;
+}
+
+span.padding_left_15 {
+    padding-left: 15px;
+}
+
+.social_icon {
+    width: 100%;
+    float: left;
+}
+
+.social_icon ul {
+    margin: 0px;
+    padding: 0px;
+    display: inline-block;
+}
+
+.social_icon li {
+    float: left;
+}
+
+.social_icon li a {
+    float: left;
+    padding: 5px 10px;
+    color: #ffffff;
+    font-size: 22px;
+    width: auto;
+    margin-top: 10px;
+}
+
+.social_icon li a:hover {
+    color: #85a900;
+}
+
+.update_mail {
+    color: #ffffff;
+    width: 100%;
+    height: 55px;
+    font-size: 18px;
+    padding: 10px 20px 0px 20px;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    margin-top: 20px;
+}
+
+textarea#comment.update_mail::placeholder {
+    color: #ffffff;
+}
+
+.subscribe_bt {
+    width: 140px;
+    float: left;
+    padding-top: 30px;
+}
+
+.subscribe_bt a {
+    width: 100%;
+    float: left;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 10px 0px;
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.subscribe_bt a:hover {
+    color: #85a900;
+    background-color: transparent;
+}
+
+
+/* footer section end */
