@@ -1,15 +1,14 @@
 import { Component } from '@angular/core';
 import { Router,RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "../../components/header/header.component";
-import { BanerComponent } from "../../components/baner/baner.component";// import { AppPagesService } from '../../services/app-pages.service';
-import { WorldcountComponent } from '../../components/worldcount/worldcount.component';
+import { AboutusComponent } from '../../components/website/aboutus/aboutus.component';
+import { BanerComponent } from '../../components/website/baner/baner.component';
+import { ContactusComponent } from '../../components/website/contactus/contactus.component';
+import { FooterComponent } from '../../components/website/footer/footer.component';
+import { GalleryComponent } from '../../components/website/gallery/gallery.component';
+import { HeaderComponent } from '../../components/website/header/header.component';
+import { WhatwedoComponent } from '../../components/website/whatwedo/whatwedo.component';
+import { WorldcountComponent } from '../../components/website/worldcount/worldcount.component';
 import { RouteServiceService } from '../../services/route-service.service';
-import { AboutusComponent } from "../aboutus/aboutus.component";
-import { ContactusComponent } from "../contactus/contactus.component";
-import { FooterComponent } from "../../components/footer/footer.component";
-import { WhatwedoComponent } from "../whatwedo/whatwedo.component";
-import { GalleryComponent } from "../gallery/gallery.component";
-
 
 
 @Component({

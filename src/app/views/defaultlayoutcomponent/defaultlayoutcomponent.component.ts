@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from "../../components/header/header.component";
-import { SidebarComponent } from "../../components/sidebar/sidebar.component";
-import { HeadermainComponent } from "../../components/headermain/headermain.component";
+import { HeadermainComponent } from '../../components/headermain/headermain.component';
+import { SidebarComponent } from '../../components/sidebar/sidebar.component';
+import { HeaderComponent } from '../../components/website/header/header.component';
 
 @Component({
   selector: 'app-defaultlayoutcomponent',
