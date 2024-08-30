@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from '../views/login/login.component';
-import { DashboardComponent } from '../views/dashboard/dashboard.component';
-import { DefaultlayoutcomponentComponent } from '../views/defaultlayoutcomponent/defaultlayoutcomponent.component';
-import { HomepageComponent } from '../views/homepage/homepage.component';
-import { SignupComponent } from '../views/signup/signup.component';
+import { LoginComponent } from './views/login/login.component';
+import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { DefaultlayoutcomponentComponent } from './views/defaultlayoutcomponent/defaultlayoutcomponent.component';
+import { HomepageComponent } from './views/homepage/homepage.component';
+import { SignupComponent } from './views/signup/signup.component';
 
 export const routes: Routes = [  
     { path: '', redirectTo: 'homepage', pathMatch: 'full' },
