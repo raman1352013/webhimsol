@@ -6,6 +6,12 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
  import { AuthService } from '../../services/auth.service';
  import { NgxSpinnerService, NgxSpinnerModule } from 'ngx-spinner';
+import { MainService } from '../../services/main.service';
+import { UtilService } from '../../services/util.service';
+import { CommonService } from '../../services/common.service';
+import { RoleServiceService } from '../../services/role-service.service';
+
+import { RecaptchaModule } from 'ng-recaptcha';
 // import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 // import { UtilService } from '../../services/util.service';
 
@@ -14,7 +20,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule,FormsModule, ReactiveFormsModule, NgxSpinnerModule,],
+  imports: [CommonModule,FormsModule, ReactiveFormsModule, NgxSpinnerModule,RecaptchaModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -24,17 +30,25 @@ export class LoginComponent {
   password: any = '';
  loginForm: FormGroup;
 required: any;
+captchaResponse: string | null = null;
+
 
 
   constructor(private fb: FormBuilder,
     private router: Router,
     private routeService:RouteServiceService,
     private authService:AuthService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private mainService: MainService,
+    private formBuilder: FormBuilder,
+    private utils:UtilService,
+    private roleService:RoleServiceService,
+    private commonService:CommonService,
   
     ) {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.pattern('^[0-9]{10}$'), Validators.maxLength(10)]],
+      username: ['', [Validators.required]],
+      //username: ['', [Validators.required, Validators.pattern('^[0-9]{10}$'), Validators.maxLength(10)]],
       password: ['', [Validators.required, Validators.maxLength(20)]]
     });
   }
@@ -44,58 +58,68 @@ required: any;
     console.log('auth clicked');
     console.log(this.loginForm);
   
-    if (this.loginForm.valid) {
-      this.spinner.show(undefined, {
-        type: 'ball-scale-ripple-multiple', // Choose from available types like 'ball-clip-rotate', 'square-jelly-box', etc.
-        size: 'medium',
-        bdColor: 'rgba(0, 0, 0, 0.7)',
-        color: '#00ff00'
-      });
+    if (this.loginForm.valid && this.captchaResponse) {
+      this.spinner.show();
       const { username, password } = this.loginForm.value; // Correctly extract form values
   
      
       const payload = {
-        userName: username, // Use the extracted form value for username
-        password: password, // Use the extracted form value for password
+        username:username , // Use the extracted form value for username
+        password:password , // Use the extracted form value for password
         currentTimeMillis: new Date().getTime(),
       };
+      console.log(payload);
   
       this.authService.login(payload).subscribe(
         (response: any) => {
+
           
-  
+          console.log(response);
           if (response.hasOwnProperty('statusCode')) {
-            if (response.statusCode === 200) { // Add a condition to check for successful response
-              sessionStorage.setItem('token', response.token);
-              sessionStorage.setItem('roleId', response.userProfile.roleId);
-              sessionStorage.setItem('roleDesc', response.userProfile.roleDesc);
-              sessionStorage.setItem('userDetail', JSON.stringify(response.userDetail));
+            if (response.statusCode === 'ADV-000') { // Check for successful response
+             
+              console.log(response);
+              sessionStorage.setItem('loginresponse', response.response.token);
+              sessionStorage.setItem('token', response.response.token);
               
-              // Navigate to dashboard or handle successful login here
-              this.spinner.hide();
+               this.getUserProfile(response.response.token);
+              this.authService.setLoggedIn(true);
+               this.utils.showSuccess('Welcome ','Welcome user'); // Show success message
+              this.goToPage('defaultlayout');
+
             } else {
-              setTimeout(() => {
-                this.spinner.hide();
-              }, 1000);
-              // this.utils.showError(response.message);
+              // this.utils.showError(response.message); // Show error message based on API response
+              this.utils.showError(response.message);
             }
           }
         },
         (error: any) => {
           console.log('API Error:', error);
-          this.spinner.hide();
-          // this.utils.overlay('h');
-        //   this.utils.showError('Login failed. Please try again.'); // Show a user-friendly error message
-        // }
+      
+          if (error.status === 400) {
+            this.utils.showError('Bad Request. Please check your input.');
+          } else if (error.status === 401) {
+            this.utils.showError('Unauthorized. Invalid credentials.');
+          } else if (error.status === 403) {
+            this.utils.showError('Forbidden. You don’t have permission to access this.');
+          } else if (error.status === 404) {
+            this.utils.showError('API not found. Please try again later.');
+          } else if (error.status === 500) {
+            this.utils.showError('Internal Server Error. Please try again later.');
+          } else {
+            this.utils.showError('Login failed. Please try again.');
+          }
         }
       );
+      
     } else {
       this.loginForm.markAllAsTouched(); // Trigger validation messages
     }
 
-   
+   setTimeout(() => {
+    this.spinner.hide();
+   }, 2000);
   }
-  
   
 
 
@@ -105,6 +129,14 @@ required: any;
    
    }
   
-  
+   getUserProfile(token: any) {
+    this.mainService.getUserProfile(token);
+   }
+
+   onCaptchaResolved(captchaResponse: string | null): void {
+    this.captchaResponse = captchaResponse;
+    console.log(`Resolved captcha with response: ${captchaResponse}`);
+    
+  }
 
 }

@@ -77,7 +77,7 @@ type="ball-scale-multiple">
 
           </div>
           <div class="form-floating mb-3">
-            <input type="email" class="form-control" formControlName="mobile" [maxLength]="10"   placeholder="Mobile No.">
+            <input type="mobile" class="form-control" formControlName="mobile" [maxLength]="10"   placeholder="Mobile No.">
             <label for="floatingInput">Mobile No.</label>
             <div *ngIf="signupForm.get('mobile')?.invalid && signupForm.get('mobile')?.touched" class="text-danger">
               <div *ngIf="signupForm.get('mobile')?.errors?.['required']">Mobile number is required.</div>
@@ -89,7 +89,9 @@ type="ball-scale-multiple">
             <label for="floatingPassword">Password</label>
             <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="text-danger">
               <div *ngIf="signupForm.get('password')?.errors?.['required']">Password is required.</div>
-              <div *ngIf="signupForm.get('password')?.errors?.['minlength']">Password must be at least 2 characters.
+              <div *ngIf="signupForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters.
+                <div *ngIf="signupForm.get('password')?.errors?.['pattern']">Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character</div>
+                
               </div>
             </div>
           </div>
@@ -101,11 +103,18 @@ type="ball-scale-multiple">
             <div *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched"
               class="text-danger">
               <div *ngIf="signupForm.get('confirmPassword')?.errors?.['required']">Confirm password is required.</div>
+              <div *ngIf="signupForm.errors?.['mismatch']" class="text-danger">
+                Passwords do not match.
+              </div>
+            
             </div>
-            <div *ngIf="signupForm.errors?.['mismatch']" class="text-danger">
-              Passwords do not match.
-            </div>
+            
           </div>
+
+             <!-- Google reCAPTCHA widget -->
+             <re-captcha (resolved)="onCaptchaResolved($event)" siteKey="6LfIcjAqAAAAAPTnSoaLt1uU8h3SH3EtFT5OMXOf"></re-captcha><br>
+  
+<p>Already have account with us ? <a (click)="goToPage('login')">Go to login</a></p>
 
           <div class="text-center text-lg-start mt-4 pt-2">
             <button type="submit" class="btn btn-primary btn-lg" style="padding-left:   

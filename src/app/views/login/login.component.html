@@ -23,7 +23,7 @@ type="ball-scale-multiple">
               </div>
             </div>
             
-            <div class="form-floating">
+            <div class="form-floating mb-3">
               <input type="password" class="form-control" formControlName="password" maxlength="20" id="floatingPassword" placeholder="Password">
               <label for="floatingPassword">Password</label>
               <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-danger">
@@ -32,6 +32,12 @@ type="ball-scale-multiple">
               </div>
             </div> 
           
+<div></div>
+             <!-- Google reCAPTCHA widget -->
+          <re-captcha (resolved)="onCaptchaResolved($event)" siteKey="6LfIcjAqAAAAAPTnSoaLt1uU8h3SH3EtFT5OMXOf"></re-captcha><br>
+  
+
+<p>Dont have account with us ? <a (click)="goToPage('signup')">Register</a></p>
             <div class="text-center text-lg-start mt-4 pt-2">
               <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
             </div>
