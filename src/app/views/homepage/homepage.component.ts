@@ -9,12 +9,14 @@ import { HeaderComponent } from '../../components/website/header/header.componen
 import { WhatwedoComponent } from '../../components/website/whatwedo/whatwedo.component';
 import { WorldcountComponent } from '../../components/website/worldcount/worldcount.component';
 import { RouteServiceService } from '../../services/route-service.service';
+import { VisionComponent } from "../../components/website/vision/vision.component";
+import { Footer2Component } from "../../components/website/footer2/footer2.component";
 
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, BanerComponent, WorldcountComponent, AboutusComponent, ContactusComponent, FooterComponent, WhatwedoComponent, GalleryComponent],
+  imports: [RouterOutlet, HeaderComponent, BanerComponent, WorldcountComponent, AboutusComponent, ContactusComponent, FooterComponent, WhatwedoComponent, GalleryComponent, VisionComponent, Footer2Component],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'
 })
