@@ -100,7 +100,7 @@ type="ball-scale-multiple">
             <input type="password" class="form-control" formControlName="confirmPassword"
               placeholder="Confirm Password">
             <label for="floatingPassword">Confirm Password</label>
-            <div *ngIf="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched"
+            <div *ngIf=" signupForm.get('confirmPassword')?.touched"
               class="text-danger">
               <div *ngIf="signupForm.get('confirmPassword')?.errors?.['required']">Confirm password is required.</div>
               <div *ngIf="signupForm.errors?.['mismatch']" class="text-danger">

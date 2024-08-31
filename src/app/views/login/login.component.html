@@ -1,10 +1,5 @@
 <section class="vh-100">
-  <ngx-spinner 
-bdColor="rgba(51,51,51,0.8)" 
-size="large" 
-color="green" 
-type="ball-scale-multiple">
-</ngx-spinner>
+ 
     <div class="container-fluid h-custom">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-9 col-lg-6 col-xl-5">
@@ -14,7 +9,7 @@ type="ball-scale-multiple">
         <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
           <form [formGroup]="loginForm" (ngSubmit)="authUser()">
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" formControlName="username" maxlength="10" id="floatingInput" placeholder="Mobile No.">
+              <input type="text" class="form-control" formControlName="username" maxlength="20" id="floatingInput" placeholder="Mobile No.">
               <label for="floatingInput">Mobile No.</label>
               <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched" class="text-danger">
                 <div *ngIf="loginForm.get('username')?.errors?.['required']">Username is required.</div>

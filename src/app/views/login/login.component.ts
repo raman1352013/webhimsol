@@ -85,7 +85,8 @@ captchaResponse: string | null = null;
                this.getUserProfile(response.response.token);
               this.authService.setLoggedIn(true);
                this.utils.showSuccess('Welcome ','Welcome user'); // Show success message
-              this.goToPage('defaultlayout');
+              
+               
 
             } else {
               // this.utils.showError(response.message); // Show error message based on API response

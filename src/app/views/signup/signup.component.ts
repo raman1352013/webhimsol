@@ -38,8 +38,9 @@ export class SignupComponent {
     this.signupForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],   
+      mobile: ['', [Validators.required]],   
 
-      mobile: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],   
+      //mobile: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],   
 
       password: ['', [Validators.required, Validators.minLength(8),Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
       confirmPassword: ['', [Validators.required]]
@@ -81,7 +82,7 @@ export class SignupComponent {
         currentTimeMillis: new Date().getTime(),
         // email:mobile,
         role: "USER",
-        mobileNo: mobile,
+        mobileNo: "1212121212",
         mode: "SELF",
       };
       console.log(payload);
