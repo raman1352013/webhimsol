@@ -15,7 +15,9 @@ export class RouteServiceService {
      this.router.navigate(['/homepage']);
    }else if(pagename=="login"){
      this.router.navigate(['/login'])
-   }
+   }else if(pagename=="consultations"){
+    this.router.navigate(['/consultations'])
+  }
    else if(pagename=="signup"){
      this.router.navigate(['/signup'])
    }
@@ -26,5 +28,8 @@ export class RouteServiceService {
    else if(pagename=="defaultlayout"){
      this.router.navigate(['/defaultlayout'])
    }
+   else if(pagename=="myaccountview"){
+    this.router.navigate(['/myaccountview'])
+  }
  }
 }

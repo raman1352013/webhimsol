@@ -20,6 +20,11 @@ export class ApiUrlService implements OnInit {
   public readonly POST_LOGIN = this.BASE_URL_USERS + 'api/user/v1/login';
   public readonly POST_V2_LOGIN = this.BASE_URL_USERS + 'api/user/v2/login';
 
+
+
+
+  public readonly POST_REGISTER = this.BASE_URL_USERS + 'api/user/v1/register';
+
   public readonly POST_FORGOT_PASS =
     this.BASE_URL_USERS + 'api/user/v2/forgot-password';
   public readonly POST_FORGOT_VERIFY =
@@ -27,6 +32,10 @@ export class ApiUrlService implements OnInit {
 
   public readonly GET_USER_MENU_RIGHTS =
     this.BASE_URL_USERS + 'api/user/user-rights';
+
+  public readonly GET_USER_PROFILE =
+    this.BASE_URL_USERS + 'api/user/v1/user-profile';
+
 
   public readonly GET_USER_ROLES =
     this.BASE_URL_MASTER + 'api/master/v1/roles/departmentId/1';

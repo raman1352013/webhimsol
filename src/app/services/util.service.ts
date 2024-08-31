@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -27,27 +28,52 @@ export class UtilService {
 
   showSuccess(title: any, msg: any) {
     this.toaster.success(msg, title, {
-      positionClass: 'toast-bottom-right',
+      //positionClass: 'toast-bottom-right',
       // positionClass: 'toast-top-right',
-      closeButton: true,
+      // closeButton: true,
+      toastClass: 'custom-toast-success',
     });
   }
+
+  // showSuccess(title: string, msg: string) {
+  //   this.toaster.success(msg, title, {
+  //     toastClass: 'ngx-toastr custom-toast-success', // Combine ngx-toastr and custom classes
+  //     //closeButton: true, // Enable close button
+  //     positionClass: 'toast-top-right', // Set position to top right
+  //     timeOut: 5000, // Display for 5 seconds
+  //     progressBar: true, // Show progress bar
+  //     progressAnimation: 'increasing', // Progress bar animation
+  //   });
+  // }
 
   showWarning(title: any, msg: any) {
     this.toaster.warning(msg, title, {
       positionClass: 'toast-bottom-right',
       // positionClass: 'toast-top-right',
       closeButton: true,
+      toastClass: 'custom-toast-warning',
     });
   }
 
-  showError(msg: any) {
+  showError1(msg: any) {
     this.toaster.error(msg, 'Error!', {
       positionClass: 'toast-bottom-right',
       // positionClass: 'toast-top-right',
-      closeButton: true,
+      // closeButton: true,
+      toastClass: 'custom-toast-error',
     });
     return false;
+  }
+
+  showError(msg: any) {
+    this.toaster.error(msg,'Error!', {
+      toastClass: 'ngx-toastr custom-toast-success', // Combine ngx-toastr and custom classes
+      closeButton: true, // Enable close button
+      positionClass: 'toast-top-right', // Set position to top right
+      timeOut: 5000, // Display for 5 seconds
+      progressBar: true, // Show progress bar
+      progressAnimation: 'increasing', // Progress bar animation
+    });
   }
 
   overlay = function (type: any) {
@@ -62,7 +88,9 @@ export class UtilService {
   };
 
   isSuccess(msg: any) {
-    return msg == 'Success';
+    if (msg == 'Success') 
+    return true;
+  else return false;
   }
 
   showRanges(role: any) {

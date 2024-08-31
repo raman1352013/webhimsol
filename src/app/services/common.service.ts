@@ -16,6 +16,12 @@ export class CommonService {
   signup(payload : any){
     return this.baseService.postCall(this.apiUrl.POST_REGISTER_USER, payload, sessionStorage.getItem('token'));
   }
+  getUserProfile(token: any){
+    return this.baseService.getCallWithToken2(this.apiUrl.GET_USER_PROFILE,token);
+  }
+
+
+ 
   // getCompany(){
   //   return this.baseService.getCallWithToken2(this.apiUrl.GET_COMPANY, sessionStorage.getItem('token'));
   // }
