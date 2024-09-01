@@ -1,0 +1,50 @@
+/* Custom styles for the records section */
+#records {
+    background-color: #f9f9f9; /* Light background color */
+}
+
+.section_main_head h6 {
+    color: #6c757d; /* Secondary text color */
+    font-weight: 600; /* Semi-bold */
+    margin-bottom: 10px;
+}
+
+.section_main_head h3 {
+    color: #343a40; /* Darker heading color */
+    font-weight: 700; /* Bold */
+}
+
+.box-count {
+    color: #007bff; /* Primary color for the count */
+    font-weight: 700; /* Bold */
+}
+
+.card {
+    background-color: #ffffff; /* White background for cards */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for cards */
+    padding: 20px; /* Padding inside cards */
+    transition: transform 0.2s ease-in-out; /* Smooth scaling on hover */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Slight scaling effect on hover */
+}
+
+.card-img-top {
+    width: 50px; /* Fixed width for images */
+    margin-bottom: 15px; /* Space below images */
+}
+
+.card-body h6 {
+    color: #343a40; /* Darker text color for headings */
+    font-weight: 600; /* Semi-bold */
+    margin-top: 10px; /* Space above headings */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 576px) {
+    .card {
+        padding: 15px; /* Reduced padding on smaller screens */
+    }
+}
