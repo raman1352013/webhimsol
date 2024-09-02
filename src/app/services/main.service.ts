@@ -35,7 +35,7 @@ export class MainService {
             sessionStorage.setItem('userRole', userRole);
 
              if(this.roleService.hasRole('USER')){
-              this.appPages.goTo('homepage');
+              this.appPages.goTo('myaccount');
              }else if (this.roleService.hasRole('ADMIN')){
               this.appPages.goTo('defaultlayout');
              }

@@ -10,13 +10,14 @@ import { appPagesService } from '../../services/app-pages.service';
 import { MainService } from '../../services/main.service';
 import { AuthService } from '../../services/auth.service';
 import { RecaptchaModule } from 'ng-recaptcha';
+import { HeaderComponent } from "../../components/website/header/header.component";
 
 
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [CommonModule,FormsModule,ReactiveFormsModule,NgxSpinnerModule,RecaptchaModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgxSpinnerModule, RecaptchaModule, HeaderComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })

@@ -12,6 +12,7 @@ import { CommonService } from '../../services/common.service';
 import { RoleServiceService } from '../../services/role-service.service';
 
 import { RecaptchaModule } from 'ng-recaptcha';
+import { HeaderComponent } from "../../components/website/header/header.component";
 // import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
 // import { UtilService } from '../../services/util.service';
 
@@ -20,7 +21,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule,FormsModule, ReactiveFormsModule, NgxSpinnerModule,RecaptchaModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, NgxSpinnerModule, RecaptchaModule, HeaderComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
