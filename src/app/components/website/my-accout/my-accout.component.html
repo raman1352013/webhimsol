@@ -1,1 +1,81 @@
-<p>my-accout works!</p>
+
+<div class="container account-container mt-3">
+    <div class="row">
+      <div class="col-lg-3">
+        <!-- Sidebar -->
+        <div class="list-group">
+          <a href="#profile" class="list-group-item list-group-item-action active" data-bs-toggle="list">Profile Info</a>
+          <a href="#order-history" class="list-group-item list-group-item-action" data-bs-toggle="list">Order History</a>
+          <a href="#upcoming-events" class="list-group-item list-group-item-action" data-bs-toggle="list">Upcoming Events</a>
+          <a href="#settings" class="list-group-item list-group-item-action" data-bs-toggle="list">Settings</a>
+          <a  class="list-group-item list-group-item-action">Logout</a>
+        </div>
+      </div>
+  
+      <div class="col-lg-9">
+        <!-- Main Content -->
+        <div class="tab-content">
+          <!-- Profile Info -->
+          <div class="tab-pane fade show active" id="profile">
+            <div class="card">
+              <div class="card-header">Profile Information</div>
+              <div class="card-body">
+                <p><strong>Name:</strong> John Doe</p>
+                <p><strong>Email:</strong> john.doehimsols.com</p>
+                <p><strong>Phone:</strong> +91 9876543210</p>
+                <a href="#" class="btn btn-success">Edit Profile</a>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Order History -->
+          <div class="tab-pane fade" id="order-history">
+            <div class="card">
+              <div class="card-header">Order History</div>
+              <div class="card-body">
+                <ul class="list-group">
+                  <li class="list-group-item">Order #1234 - Solar Panel Kit - $299.99 - <span class="badge bg-success">Completed</span></li>
+                  <li class="list-group-item">Order #5678 - Wind Turbine - $499.99 - <span class="badge bg-warning">Pending</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Upcoming Events -->
+          <div class="tab-pane fade" id="upcoming-events">
+            <div class="card">
+              <div class="card-header">Upcoming Events</div>
+              <div class="card-body">
+                <p><strong>Green Energy Workshop:</strong> 15th September 2024</p>
+                <p><strong>Eco-Friendly Living Webinar:</strong> 28th October 2024</p>
+                <a href="#" class="btn btn-success">View All Events</a>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Settings -->
+          <div class="tab-pane fade" id="settings">
+            <div class="card">
+              <div class="card-header">Account Settings</div>
+              <div class="card-body">
+                <p><a href="#">Change Password</a></p>
+                <p><a href="#">Manage Notifications</a></p>
+                <p><a href="#">Privacy Settings</a></p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Logout -->
+          <div class="tab-pane fade" id="logout">
+            <div class="card">
+              <div class="card-header">Logout</div>
+              <div class="card-body">
+                <p>Are you sure you want to logout?</p>
+                <a href="#" class="btn btn-danger">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
