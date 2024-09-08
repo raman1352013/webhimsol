@@ -21,6 +21,7 @@ export class ApiUrlService implements OnInit {
   public readonly POST_V2_LOGIN = this.BASE_URL_USERS + 'api/user/v2/login';
 
 
+  public readonly POST_CHANGE_PASS =this.BASE_URL_USERS + 'api/user/v1/change-password';
 
 
   public readonly POST_REGISTER = this.BASE_URL_USERS + 'api/user/v1/register';
@@ -158,9 +159,6 @@ export class ApiUrlService implements OnInit {
     this.BASE_URL_USERS + 'api/so/v1/so-mapping-details/electionId/';
   public readonly SAVE_MAP_UNMAP_DATA =
     this.BASE_URL_USERS + 'api/so/v1/so-map-unmap';
-
-  public readonly POST_CHANGE_PASS =
-    this.BASE_URL_USERS + 'api/user/v1/change-password';
 
   public readonly GET_USER_INFO =
     this.BASE_URL_USERS + 'api/user/user-profile/';

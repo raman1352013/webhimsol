@@ -12,7 +12,7 @@
         <!-- <form>
             <div class="row">
               <div class="col-md-6">
-                <div class="form-floating mb-3">
+                <div class="form-floating mb-1">
                   <input type="text" class="form-control" id="floatingInputfirstName" placeholder="First Name">
                   <label for="floatingInput"> First Name</label>
                 </div>
@@ -20,7 +20,7 @@
   
               </div>
               <div class="col-md-6">
-                <div class="form-floating mb-3">
+                <div class="form-floating mb-1">
                   <input type="text" class="form-control" id="floatingInputLastName" placeholder="Last Name">
                   <label for="floatingInput"> Last Name</label>
                 </div>
@@ -30,16 +30,16 @@
 
             </div>
             
-            <div class="form-floating mb-3">
+            <div class="form-floating mb-1">
               <input type="email" class="form-control" id="floatingInput" placeholder="">
               <label for="floatingInput">Mobile No.</label>
             </div>
            
-            <div class="form-floating mb-3">
+            <div class="form-floating mb-1">
               <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
               <label for="floatingPassword">Password</label>
             </div>
-            <div class="form-floating mb-3">
+            <div class="form-floating mb-1">
               <input type="password" class="form-control" id="floatingPassword2" placeholder=" Confirm Password">
               <label for="floatingPassword"> Confirm Password</label>
             </div>
@@ -54,7 +54,7 @@
 
         <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
 
-          <div class="form-floating mb-3">
+          <div class="form-floating mb-1">
             <input type="text" class="form-control" formControlName="firstName" placeholder="First Name">
             <label for="floatingInput"> First Name</label>
             <div *ngIf="signupForm.get('firstName')?.invalid && signupForm.get('firstName')?.touched"
@@ -64,7 +64,7 @@
 
 
           </div>
-          <div class="form-floating mb-3">
+          <div class="form-floating mb-1">
             <input type="text" class="form-control" formControlName="lastName"   placeholder="Last Name">
             <label for="floatingInput"> Last Name</label>
             <div *ngIf="signupForm.get('lastName')?.invalid && signupForm.get('lastName')?.touched" class="text-danger">
@@ -72,7 +72,7 @@
             </div>
 
           </div>
-          <div class="form-floating mb-3">
+          <div class="form-floating mb-1">
             <input type="mobile" class="form-control" formControlName="mobile" [maxLength]="10"   placeholder="Mobile No.">
             <label for="floatingInput">Mobile No.</label>
             <div *ngIf="signupForm.get('mobile')?.invalid && signupForm.get('mobile')?.touched" class="text-danger">
@@ -80,7 +80,7 @@
               <div *ngIf="signupForm.get('mobile')?.errors?.['pattern']">Invalid mobile format.</div>
             </div>
           </div>
-          <div class="form-floating mb-3">
+          <div class="form-floating mb-1">
             <input type="password" class="form-control" formControlName="password" placeholder="Password">
             <label for="floatingPassword">Password</label>
             <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="text-danger">
@@ -92,7 +92,7 @@
             </div>
           </div>
 
-          <div class="form-floating mb-3">
+          <div class="form-floating mb-1">
             <input type="password" class="form-control" formControlName="confirmPassword"
               placeholder="Confirm Password">
             <label for="floatingPassword">Confirm Password</label>

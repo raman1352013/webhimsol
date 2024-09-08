@@ -1,0 +1,14 @@
+.details-list li {
+    color: red; 
+  }
+  
+  .details-list li.valid {
+    color: green;
+  }
+  
+  .details-list li.invalid {
+    color: red;
+  }
+
+  
+  

@@ -30,6 +30,9 @@ export class AuthService {
   setLoggedIn(value: boolean): void {
     this.isLoggedInSubject.next(value);
   }
+  changePass(payload : any,token:any){
+    return this.baseService.postCall(this.apiUrl.POST_CHANGE_PASS, payload,token);
+  }
 
   checkLoginStatus(): void {
     const token = sessionStorage.getItem('token');
