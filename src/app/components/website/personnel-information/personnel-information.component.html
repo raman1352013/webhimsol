@@ -1,0 +1,86 @@
+<div class="accountright-wrap">
+    <div class="accountright-head">
+        <h3>Personal Information</h3>
+        <p>View and manage your personal information, including phone number, address etc.</p>
+    </div>
+    <div class="accountright-content">
+        <div class="row flex-wrap justify-content-between">
+            <div class="info-block mt-2">
+                <div class="d-flex justify-content-between align-items-center pb-3">
+                    <h5 class="my-0">Name</h5>
+                    <img src="assets/images/user-info-icon.png">
+                </div>
+                <p class="my-0 name">{{userDetails.firstName}}</p>
+            </div>
+            <div class="info-block mt-2">
+                <div class="d-flex justify-content-between align-items-center pb-3">
+                    <h5 class="my-0">Email</h5>
+                    <img src="assets/images/email_icon.png">
+                </div>
+                <p class="my-0 name">{{userDetails.email}}</p>
+            </div>
+            <div class="info-block mt-2">
+                <div class="d-flex justify-content-between align-items-center pb-3">
+                    <h5 class="my-0">Phone</h5>
+                    <img src="assets/images/phone-icon.png">
+                </div>
+                <p class="my-0 name">{{userDetails.mobileNo}}</p>
+            </div>
+            <div class="info-block mt-2">
+                <div class="d-flex justify-content-between align-items-center pb-3">
+                    <h5 class="my-0">Country</h5>
+                    <img src="assets/images/globe-icon.png">
+                </div>
+                <p class="my-0 name">India</p>
+            </div>
+            <div class="info-block mt-2">
+                <div class="d-flex justify-content-between align-items-center pb-3">
+                    <h5 class="my-0">Language</h5>
+                    <img src="assets/images/language-icon.png">
+                </div>
+                <p class="my-0 name">English</p>
+            </div>
+            <button class="red-btn btn mt-2" (click)="navigateToViewProfile()" > View / Edit All Details</button>
+            <!-- <button class="red-btn btn mt-2" data-bs-toggle="modal" data-bs-target="#view_editModal"> View / Edit All Details</button> -->
+        </div>
+    </div>
+</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="view_editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="view_editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="view_editModalLabel">View/Edit Profile</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+ <!-- Modal -->
+<div class="modal fade" id="view_editModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="view_editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="view_editModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div>

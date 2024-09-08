@@ -1,0 +1,17 @@
+.info-block {
+    width: 30%;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 20px;
+    background: #fff;
+}
+.info-block img { width: 20px; }
+.info-block h5 { font-size: 18px; }
+.info-block p { font-size: 14px; }
+.accountright-content .red-btn { width: 30%; border-radius: 15px; }
+.accountright-content .row { gap: 30px; }
+/*- common account css -*/
+.accountright-wrap { max-width: 740px;}
+.accountright-head { margin-bottom: 4%; }
+.accountright-head p { font-size: 15px; }
+.accountright-head h3 { margin-bottom: 15px; }

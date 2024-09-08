@@ -19,7 +19,13 @@ export class CommonService {
   getUserProfile(token: any){
     return this.baseService.getCallWithToken2(this.apiUrl.GET_USER_PROFILE,token);
   }
+  updateProfileInfo(payload : any){
+    return this.baseService.postCall(this.apiUrl.POST_UPDATE_USER_INFO, payload, sessionStorage.getItem('token'));
+  }
+  getUserProfileByID(userId:any){
+    return this.baseService.getCallWithToken2(this.apiUrl.GET_USER_PROFILE_BY_ID +userId, sessionStorage.getItem('token'));
 
+  }
 
  
   // getCompany(){

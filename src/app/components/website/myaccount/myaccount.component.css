@@ -1,0 +1,21 @@
+.myaccount-sec { padding-bottom: 120px; }
+.myaccount-sec h2{ font-size: 28px;}
+.row.myaccount-row { 
+    margin-top: 3%; 
+    border-top: 1px solid #ddd;
+    padding-top: 4%;
+}
+.aholder-info .head { margin-bottom: 40px; }
+img.profile-img {
+    margin-bottom: 18px;
+    width: 85px;
+}
+p.aholder-email { font-size: 14px; }
+.aholder-info .list-item {
+    color: #000;
+    margin-top: 25px;
+}
+.aholder-info .list-item:hover { color: #cc0000; }
+.list-item.active { color: #cc0000!important; }
+
+

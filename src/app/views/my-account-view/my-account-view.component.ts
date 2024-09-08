@@ -7,11 +7,12 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from '../../services/auth.service';
 import { UtilService } from '../../services/util.service';
+import { MyAccountComponent } from "../../components/website/myaccount/myaccount.component";
 
 @Component({
   selector: 'app-my-account-view',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, MyAccoutComponent],
+  imports: [HeaderComponent, FooterComponent, MyAccoutComponent, MyAccountComponent],
   templateUrl: './my-account-view.component.html',
   styleUrl: './my-account-view.component.css'
 })

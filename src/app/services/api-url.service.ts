@@ -23,6 +23,8 @@ export class ApiUrlService implements OnInit {
 
   public readonly POST_CHANGE_PASS =this.BASE_URL_USERS + 'api/user/v1/change-password';
 
+  public readonly GET_USER_PROFILE_BY_ID =
+  this.BASE_URL_USERS + 'api/user/v1/user-profile/';
 
   public readonly POST_REGISTER = this.BASE_URL_USERS + 'api/user/v1/register';
 

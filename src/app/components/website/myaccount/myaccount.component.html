@@ -1,0 +1,27 @@
+<section class="myaccount-sec section-padding">
+  <div class="container">
+    <div class="sec-head">
+      <h2 class="text-red">My Account</h2>
+    </div>
+    <div class="row myaccount-row">
+      <div class="col-md-3">
+        <div class="aholder-info">
+          <div class="head">
+            <img src="assets/images/user.png" class="rounded-circle profile-img" alt="Profile Picture" width="50">
+            <h4 class="aholder-name">{{parsedUserProfile.firstName}}{{parsedUserProfile.lastName}}</h4>
+            <p class="aholder-email my-0">{{parsedUserProfile.email}}</p>
+          </div>
+          <div class="list-options">
+            <a class="d-block list-item"  routerLink="personalinfo" routerLinkActive="active">Personal Information</a>
+            <a class="d-block list-item" routerLink="mycourses" routerLinkActive="active">My Courses</a>
+            <a class="d-block list-item" routerLink="myconsultations" routerLinkActive="active">My Consultations</a>
+            <a class="d-block list-item" routerLink="orderhistory" routerLinkActive="active">Order History</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</section>

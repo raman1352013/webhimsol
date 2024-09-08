@@ -1,0 +1,22 @@
+.viewdetails-content {
+    padding-top: 6%;
+    max-width: 680px;
+}
+.viewdetails-content .field-wrap {
+    width: 32.4%;
+}
+.viewdetails-content h5 {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 40px;
+}
+.row.fields-row {
+    gap: 10px;
+    flex-wrap: nowrap;
+    padding-bottom: 30px;
+}
+.viewdetails-content label {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
