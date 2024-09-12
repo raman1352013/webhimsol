@@ -13,12 +13,13 @@ import { VisionComponent } from "../../components/website/vision/vision.componen
 import { Footer2Component } from "../../components/website/footer2/footer2.component";
 import { AchievementsComponent } from "../../components/website/achievements/achievements.component";
 import { MissionComponent } from "../../components/website/mission/mission.component";
+import { Header2Component } from "../../components/website/header2/header2.component";
 
 
 @Component({
   selector: 'app-homepage',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, BanerComponent, WorldcountComponent, AboutusComponent, ContactusComponent, FooterComponent, WhatwedoComponent, GalleryComponent, VisionComponent, Footer2Component, AchievementsComponent, MissionComponent],
+  imports: [RouterOutlet, HeaderComponent, BanerComponent, WorldcountComponent, AboutusComponent, ContactusComponent, FooterComponent, WhatwedoComponent, GalleryComponent, VisionComponent, Footer2Component, AchievementsComponent, MissionComponent, Header2Component],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'
 })

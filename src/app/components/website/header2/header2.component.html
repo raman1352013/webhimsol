@@ -1,0 +1,72 @@
+<header>
+ 
+    <nav class="navbar navbar-expand-lg mt-5 ">
+        <div class="container-fluid">
+            <div class="logo mr-5">
+                <img src="assets/logoheader.jpeg" alt="Himsols Logo">
+            </div>
+          <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon text-white"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+              <li class="nav-item">
+                <a class="nav-link " aria-current="page" href="#">Home</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " aria-disabled="true">Mission</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " aria-disabled="true">Vision</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " aria-disabled="true">Gallery</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " aria-disabled="true">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="goToPage('login')"  routerLinkActive="router-link-active" >Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" (click)="goToPage('signup')"  routerLinkActive="router-link-active" >Signup</a>
+              </li>
+              
+              
+            </ul>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="contribute-btn">Contribute</a>
+            </div>
+            
+              <div class="btn-group dropstart " *ngIf="isLoggedIn">
+                <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-user me-2"></i> Name
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+                  <li><a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#changePassModal">
+                    Change Password </a></li>
+                </ul>
+              
+             
+            </div>
+            
+            
+          </div>
+        </div>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Working Towards a Sustainable Future</h1>
+        <a href="#" class="explore-btn">Explore</a>
+    </div>
+</section>
