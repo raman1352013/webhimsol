@@ -6,11 +6,12 @@ import { AuthService } from '../../../services/auth.service';
 import { RouteServiceService } from '../../../services/route-service.service';
 import { UtilService } from '../../../services/util.service';
 import { CommonModule } from '@angular/common';
+import { HeroimageComponent } from "../heroimage/heroimage.component";
 
 @Component({
   selector: 'app-header2',
   standalone: true,
-  imports: [CommonModule, CommonModule,ReactiveFormsModule],
+  imports: [CommonModule, CommonModule, ReactiveFormsModule, HeroimageComponent],
   templateUrl: './header2.component.html',
   styleUrl: './header2.component.css'
 })

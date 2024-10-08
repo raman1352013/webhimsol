@@ -1,0 +1,36 @@
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background-image: url('https://freestocks.org/fs/wp-content/uploads/2023/09/inside_of_a_temperate_mixed_forest-1024x683.jpg'); 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.explore-btn {
+    background-color: white;
+    color: green;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.explore-btn:hover {
+    background-color: green;
+    color: white;
+}

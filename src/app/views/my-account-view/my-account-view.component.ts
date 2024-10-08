@@ -8,11 +8,12 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { AuthService } from '../../services/auth.service';
 import { UtilService } from '../../services/util.service';
 import { MyAccountComponent } from "../../components/website/myaccount/myaccount.component";
+import { Header2Component } from "../../components/website/header2/header2.component";
 
 @Component({
   selector: 'app-my-account-view',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, MyAccoutComponent, MyAccountComponent],
+  imports: [HeaderComponent, FooterComponent, MyAccoutComponent, MyAccountComponent, Header2Component],
   templateUrl: './my-account-view.component.html',
   styleUrl: './my-account-view.component.css'
 })
