@@ -33,9 +33,10 @@ export class MainService {
               const userProfile = response.response.userProfile;
              const userRole = userProfile.role;
             sessionStorage.setItem('userRole', userRole);
+            sessionStorage.setItem('userid',userProfile.userId)
 
              if(this.roleService.hasRole('USER')){
-              this.appPages.goTo('myaccount');
+              this.appPages.goTo('myaccountview');
              }else if (this.roleService.hasRole('ADMIN')){
               this.appPages.goTo('defaultlayout');
              }

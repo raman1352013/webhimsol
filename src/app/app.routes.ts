@@ -14,7 +14,7 @@ export const routes: Routes = [
      { path: 'dashboard', component: DashboardComponent },
      { path: 'signup', component: SignupComponent },
      { path: 'homepage', component: HomepageComponent },
-     { path: 'myaccount', component: MyAccountViewComponent },
+     
      { path: 'defaultlayout', component: DefaultlayoutcomponentComponent },
      {
         path: 'myaccountview',
