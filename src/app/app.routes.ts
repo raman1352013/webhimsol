@@ -23,6 +23,11 @@ export const routes: Routes = [
          
           { path: 'personalinfo', component: PersonnelInformationComponent },
           { path: 'viewprofile', component: MyvieweditprofileComponent },
+          { path: 'upcomingevents', component: PersonnelInformationComponent },
+          { path: 'settings', component: MyvieweditprofileComponent },
+          { path: 'orderhistory', component: PersonnelInformationComponent },
+          { path: 'marketplace', component: MyvieweditprofileComponent },
+          
            { path: '', redirectTo: 'personalinfo', pathMatch: 'full' }
         ]
       },
