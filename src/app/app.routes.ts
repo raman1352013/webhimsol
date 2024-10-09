@@ -7,6 +7,10 @@ import { SignupComponent } from './views/signup/signup.component';
 import { MyAccountViewComponent } from './views/my-account-view/my-account-view.component';
 import { PersonnelInformationComponent } from './components/website/personnel-information/personnel-information.component';
 import { MyvieweditprofileComponent } from './components/website/myvieweditprofile/myvieweditprofile.component';
+import { UpcomingeventsComponent } from './components/website/upcomingevents/upcomingevents.component';
+import { MarketplaceComponent } from './components/website/marketplace/marketplace.component';
+import { WebdashboardComponent } from './components/webUsersComponents/webdashboard/webdashboard.component';
+import { WebServicesComponent } from './components/webUsersComponents/web-services/web-services.component';
 
 export const routes: Routes = [  
     { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -20,13 +24,14 @@ export const routes: Routes = [
         path: 'myaccountview',
         loadComponent: () => import('../app/views/my-account-view/my-account-view.component').then(m => m.MyAccountViewComponent),
         children: [
-         
+          { path: 'dashboard', component: WebdashboardComponent },
+          { path: 'services', component: WebServicesComponent },
           { path: 'personalinfo', component: PersonnelInformationComponent },
           { path: 'viewprofile', component: MyvieweditprofileComponent },
-          { path: 'upcomingevents', component: PersonnelInformationComponent },
+          { path: 'upcomingevents', component: UpcomingeventsComponent },
           { path: 'settings', component: MyvieweditprofileComponent },
-          { path: 'orderhistory', component: PersonnelInformationComponent },
-          { path: 'marketplace', component: MyvieweditprofileComponent },
+          { path: 'orderhistory', component:  MarketplaceComponent},
+          { path: 'marketplace', component: MarketplaceComponent },
           
            { path: '', redirectTo: 'personalinfo', pathMatch: 'full' }
         ]

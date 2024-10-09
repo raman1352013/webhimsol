@@ -1,19 +1,26 @@
+
 <section class="myaccount-sec section-padding">
+
+  
   <div class="container">
-    <div class="sec-head">
-      <h2 class="text-red">My Account</h2>
+    <div class="row">
+      <div class="col-10"><h2 class="text-red">Wlcome {{parsedUserProfile.firstName}} {{parsedUserProfile.lastName}}</h2>
+        <a href="#">go to homepage</a>
+      </div>
+        <div class="col-2 align-item-center justify-content-center">
+          <a >logout</a>
+        </div>
+      
     </div>
     <div class="row myaccount-row">
       <div class="col-md-3">
         <div class="aholder-info">
-          <div class="head">
-            <img src="assets/images/user.png" class="rounded-circle profile-img" alt="Profile Picture" width="50">
-            <h4 class="aholder-name">{{parsedUserProfile.firstName}}{{parsedUserProfile.lastName}}</h4>
-            <p class="aholder-email my-0">{{parsedUserProfile.email}}</p>
-          </div>
           <div class="list-options">
-            <a class="d-block list-item"  routerLink="personalinfo" routerLinkActive="active">Personal Information</a>
+            <a class="d-block list-item"  routerLink="dashboard" routerLinkActive="active">Dashboard</a>
+            <a class="d-block list-item"  routerLink="services" routerLinkActive="active">Services</a>
+            <a class="d-block list-item"  routerLink="personalinfo" routerLinkActive="active">My Applications</a>
             <a class="d-block list-item" routerLink="upcomingevents" routerLinkActive="active">Upcoming Events</a>
+            <a class="d-block list-item"  routerLink="personalinfo" routerLinkActive="active">Personal Information</a>
             <a class="d-block list-item" routerLink="settigs" routerLinkActive="active">Settings</a>
             <a class="d-block list-item" routerLink="orderhistory" routerLinkActive="active">Order History</a>
             <a class="d-block list-item" routerLink="marketplace" routerLinkActive="active">Marketplace</a>
