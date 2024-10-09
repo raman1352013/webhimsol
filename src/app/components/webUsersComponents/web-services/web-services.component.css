@@ -1,0 +1,42 @@
+.services-section {
+    background-color: #f7f7f7; /* light gray background */
+    padding: 40px 0;
+  }
+  
+  .service-card-wrapper {
+    margin-bottom: 20px; /* add some spacing between cards */
+  }
+  
+  .service-card {
+    background-color: #fff; /* white background for cards */
+    padding: 20px;
+    border: 1px solid #ddd; /* light gray border */
+    border-radius: 10px; /* rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* subtle shadow effect */
+  }
+  
+  .service-card:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* increased shadow effect on hover */
+    transform: translateY(-5px); /* slight lift on hover */
+  }
+  
+  .service-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .service-description {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .service-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #337ab7; /* blue color for prices */
+  }
+  
+  .btn-success {
+    background-color: #5cb85c; /* green color for buttons */
+    border-color: #5cb85c;
+  }
