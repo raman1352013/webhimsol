@@ -11,6 +11,7 @@ import { UpcomingeventsComponent } from './components/website/upcomingevents/upc
 import { MarketplaceComponent } from './components/website/marketplace/marketplace.component';
 import { WebdashboardComponent } from './components/webUsersComponents/webdashboard/webdashboard.component';
 import { WebServicesComponent } from './components/webUsersComponents/web-services/web-services.component';
+import { TreeTypesComponent } from './components/webUsersComponents/tree-types/tree-types.component';
 
 export const routes: Routes = [  
     { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -25,6 +26,7 @@ export const routes: Routes = [
         loadComponent: () => import('../app/views/my-account-view/my-account-view.component').then(m => m.MyAccountViewComponent),
         children: [
           { path: 'dashboard', component: WebdashboardComponent },
+          { path: 'tree-types', component: TreeTypesComponent },
           { path: 'services', component: WebServicesComponent },
           { path: 'personalinfo', component: PersonnelInformationComponent },
           { path: 'viewprofile', component: MyvieweditprofileComponent },

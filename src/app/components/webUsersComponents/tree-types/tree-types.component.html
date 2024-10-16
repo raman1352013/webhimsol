@@ -1,0 +1,19 @@
+<p>tree-types works!</p>
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Available Tree Types</h2>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let tree of treeTypes">
+        <div class="card mb-4 shadow-sm">
+          <img src="{{ tree.imageUrl }}" class="card-img-top" alt="{{ tree.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ tree.name }}</h5>
+            <p class="card-text">{{ tree.description }}</p>
+            <p class="card-text"><strong>Price: </strong>{{ tree.price  }}</p>
+            <button class="btn btn-success" (click)="applyForTree(tree.id)">Apply</button>
+            <button class="btn btn-primary" (click)="buyTree(tree.id)">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
