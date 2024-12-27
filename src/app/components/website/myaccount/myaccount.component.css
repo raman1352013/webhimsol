@@ -1,21 +1,44 @@
-.myaccount-sec { padding-bottom: 120px; }
-.myaccount-sec h2{ font-size: 28px;}
-.row.myaccount-row { 
-    margin-top: 3%; 
-    border-top: 1px solid #ddd;
-    padding-top: 4%;
-}
-.aholder-info .head { margin-bottom: 40px; }
-img.profile-img {
-    margin-bottom: 18px;
-    width: 85px;
-}
-p.aholder-email { font-size: 14px; }
-.aholder-info .list-item {
-    color: #000;
-    margin-top: 25px;
-}
-.aholder-info .list-item:hover { color: #cc0000; }
-.list-item.active { color: #cc0000!important; }
-
-
+.myaccount-row {
+    margin: 20px;
+  }
+  
+  .aholder-info {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .list-options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .list-item {
+    font-size: 16px;
+    padding: 10px 15px;
+    color: #495057;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .list-item:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .list-item.active {
+    background-color: #0056b3;
+    color: white;
+  }
+  
+  .col-md-9 {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  

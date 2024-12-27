@@ -1,10 +1,6 @@
-
-<section class="myaccount-sec section-padding">
-
-  
-  <div class="container">
+<div class="container">
     <div class="row">
-      <div class="col-10"><h2 class="text-red">Wlcome {{parsedUserProfile.firstName}} {{parsedUserProfile.lastName}}</h2>
+      <div class="col-10"><h2 class="text-red">Welcome {{parsedUserProfile.firstName}} {{parsedUserProfile.lastName}}</h2>
         <a href="#">go to homepage</a>
       </div>
         <div class="col-2 align-item-center justify-content-center">
@@ -13,24 +9,37 @@
       
     </div>
     <div class="row myaccount-row">
-      <div class="col-md-3">
+      <div class="col-md-3 col-12">
         <div class="aholder-info">
-          <div class="list-options">
-            <a class="d-block list-item"  routerLink="dashboard" routerLinkActive="active">Dashboard</a>
-            <a class="d-block list-item"  routerLink="tree-types" routerLinkActive="active">trees</a>
-            <a class="d-block list-item"  routerLink="services" routerLinkActive="active">Services</a>
-            <a class="d-block list-item"  routerLink="personalinfo" routerLinkActive="active">My Applications</a>
-            <a class="d-block list-item" routerLink="upcomingevents" routerLinkActive="active">Upcoming Events</a>
-            <a class="d-block list-item"  routerLink="personalinfo" routerLinkActive="active">Personal Information</a>
-            <a class="d-block list-item" routerLink="settigs" routerLinkActive="active">Settings</a>
-            <a class="d-block list-item" routerLink="orderhistory" routerLinkActive="active">Order History</a>
-            <a class="d-block list-item" routerLink="marketplace" routerLinkActive="active">Marketplace</a>
+          <button
+            class="btn btn-primary d-md-none mb-3"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#sidebarMenu"
+            aria-expanded="false"
+            aria-controls="sidebarMenu"
+          >
+            Menu
+          </button>
+          <div id="sidebarMenu" class="collapse d-md-block">
+            <div class="list-options">
+              <a class="d-block list-item" routerLink="dashboard" routerLinkActive="active">Dashboard</a>
+              <a class="d-block list-item" routerLink="tree-types" routerLinkActive="active">Trees</a>
+              <a class="d-block list-item" routerLink="services" routerLinkActive="active">Services</a>
+              <a class="d-block list-item" routerLink="personalinfo" routerLinkActive="active">My Applications</a>
+              <a class="d-block list-item" routerLink="upcomingevents" routerLinkActive="active">Upcoming Events</a>
+              <a class="d-block list-item" routerLink="personalinfo" routerLinkActive="active">Personal Information</a>
+              <a class="d-block list-item" routerLink="settigs" routerLinkActive="active">Settings</a>
+              <a class="d-block list-item" routerLink="orderhistory" routerLinkActive="active">Order History</a>
+              <a class="d-block list-item" routerLink="marketplace" routerLinkActive="active">Marketplace</a>
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-9">
+      <div class="col-md-9 col-12">
         <router-outlet></router-outlet>
       </div>
     </div>
+    
+    
   </div>
-</section>
