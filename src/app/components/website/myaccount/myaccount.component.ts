@@ -24,7 +24,7 @@ export class MyAccountComponent {
   userProfile: string | null | undefined;
   parsedUserProfile: any;
 
-
+ 
 
 
   constructor(private appPages:appPagesService,

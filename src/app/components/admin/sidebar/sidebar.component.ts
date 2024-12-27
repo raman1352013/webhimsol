@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 type ImageMapping = {
   [key: string]: string;
 };
@@ -8,7 +9,7 @@ type ImageMapping = {
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
@@ -19,6 +20,7 @@ export class SidebarComponent {
     { link: '/dashboard', label: 'Dashboard' },
     { link: '/marketplace', label: 'marketplace' },
     { link: '/services', label: 'Services' },
+    { link: '/defaultlayout/addProduct', label: 'AddProduct' },
     { link: '/orders', label: 'Orders' }
   ];
 

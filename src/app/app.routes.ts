@@ -12,6 +12,7 @@ import { MarketplaceComponent } from './components/website/marketplace/marketpla
 import { WebdashboardComponent } from './components/webUsersComponents/webdashboard/webdashboard.component';
 import { WebServicesComponent } from './components/webUsersComponents/web-services/web-services.component';
 import { TreeTypesComponent } from './components/webUsersComponents/tree-types/tree-types.component';
+import { AddProductComponent } from './components/admin/add-product/add-product.component';
 
 export const routes: Routes = [  
     { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -38,7 +39,18 @@ export const routes: Routes = [
            { path: '', redirectTo: 'personalinfo', pathMatch: 'full' }
         ]
       },
+
+      {
+        path: 'defaultlayout',
+        loadComponent: () => import('../app/views/defaultlayoutcomponent/defaultlayoutcomponent.component').then(m => m.DefaultlayoutcomponentComponent),
+        children: [
+          { path: 'dashboard', component: AddProductComponent },
+          { path: 'addProduct', component: AddProductComponent },
+          
+           { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+        ]
+      },
     ];
 
-
+ 
     

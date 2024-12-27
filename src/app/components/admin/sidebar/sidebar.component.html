@@ -6,7 +6,8 @@
       <li  *ngFor="let item of menuList">
         <span class="menu-item">
           <img [src]="getImagePath(item.link)" alt="" />
-        <a href="{{ item.link }}"  *ngIf="isSidebarOpen">{{ item.label }}</a>
+        <a routerLink="{{ item.link }}" routerLinkActive="active"   *ngIf="isSidebarOpen">{{ item.label }}</a>
+        <!-- <a   *ngIf="isSidebarOpen">{{ item.label }}</a> -->
       </span>
       </li>
     </ul>
