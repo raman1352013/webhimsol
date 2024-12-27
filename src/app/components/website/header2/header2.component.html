@@ -28,10 +28,10 @@
               <li class="nav-item">
                 <a class="nav-link" href="#contact-us">Contact Us</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="!isLoggedIn">
                 <a class="nav-link" (click)="goToPage('login')" routerLinkActive="router-link-active">Login</a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item" *ngIf="!isLoggedIn">
                 <a class="nav-link" (click)="goToPage('signup')" routerLinkActive="router-link-active">Signup</a>
               </li>
               <li class="nav-item" *ngIf="isLoggedIn">
@@ -40,11 +40,13 @@
             </ul>
             <div class="btn-group dropstart" *ngIf="isLoggedIn">
               <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-user me-2"></i> Name
+                <i class="fas fa-user me-2"></i> {{parsedUserProfile.firstName}} {{parsedUserProfile.lastName}}
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><a class="dropdown-item" (click)="goToPage('myaccountview')">Profile</a></li>
                 <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+                <li><a class="dropdown-item"  data-bs-toggle="modal" data-bs-target="#changePassModal">
+                  Change Password </a></li>
               </ul>
             </div>
           </div>
@@ -59,3 +61,65 @@
         <a href="#" class="explore-btn">Explore</a>
     </div>
 </section> -->
+
+
+
+<div class="modal fade" id="changePassModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="changePassModalLabel" aria-hidden="true">
+  
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="changePassModalLabel">Change Password</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="pchangeForm" (ngSubmit)="onChangePassSubmit()">
+          
+            <div class="form-floating mb-1">
+              <input formControlName="oldPassword" maxlength="20" id="floatingInput" class="form-control mb-0" type="password" [ngClass]="{ 'is-invalid': cp['oldPassword'].touched && cp['oldPassword'].invalid }" placeholder="Enter your current password">
+              <label for="floatingInput">Old Password</label>
+            </div>
+          
+
+          <div class="form-floating mb-1">
+            <input formControlName="newPassword" class="form-control" maxlength="20" id="floatingInputnew" type="password" [ngClass]="{ 'is-invalid': cp['newPassword'].touched && cp['newPassword'].invalid }" placeholder="New Password">
+            <label for="floatingInputnew">New Password</label>
+          </div>
+
+          <div class="pchange-details position-relative">
+            <h5>Password</h5>
+            <ol class="details-list">
+              <li [ngClass]="{'valid': updateCriteria(pchangeForm.get('newPassword')?.value).lengthCriteria, 'invalid': !updateCriteria(pchangeForm.get('newPassword')?.value).lengthCriteria}">
+                Must have at least 8 characters
+              </li>
+              <li [ngClass]="{'valid': updateCriteria(pchangeForm.get('newPassword')?.value).validConditions, 'invalid': !updateCriteria(pchangeForm.get('newPassword')?.value).validConditions}">
+                Must meet all of the following conditions
+              </li>
+            </ol>
+            <ul class="details-list">
+              <li [ngClass]="{'valid': updateCriteria(pchangeForm.get('newPassword')?.value).uppercaseCriteria, 'invalid': !updateCriteria(pchangeForm.get('newPassword')?.value).uppercaseCriteria}">
+                At least 1 UPPER-case letter (A-Z)
+              </li>
+              <li [ngClass]="{'valid': updateCriteria(pchangeForm.get('newPassword')?.value).lowercaseCriteria, 'invalid': !updateCriteria(pchangeForm.get('newPassword')?.value).lowercaseCriteria}">
+                At least 1 small-case (a-z)
+              </li>
+              <li [ngClass]="{'valid': updateCriteria(pchangeForm.get('newPassword')?.value).digitCriteria, 'invalid': !updateCriteria(pchangeForm.get('newPassword')?.value).digitCriteria}">
+                At least 1 digit (0-9)
+              </li>
+              <li [ngClass]="{'valid': updateCriteria(pchangeForm.get('newPassword')?.value).specialCriteria, 'invalid': !updateCriteria(pchangeForm.get('newPassword')?.value).specialCriteria}">
+                At least 1 special character like !,#,$,%,^,&,*,_,+
+              </li>
+            </ul>
+          </div>
+
+          <div *ngIf="errorMessage" class="error-message text-danger">
+            {{ errorMessage }}
+          </div>
+
+          <button type="submit" class="btn btn-primary mr-2" [disabled]="!pchangeForm.valid">Change Password</button>
+          <button type="button" class="btn btn-secondary m-2" data-bs-dismiss="modal">Cancel</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

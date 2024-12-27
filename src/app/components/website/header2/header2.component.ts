@@ -33,6 +33,7 @@ throw new Error('Method not implemented.');
   currentComponent: string = '';
   modalInstance: bootstrap.Modal | undefined;
 
+  parsedUserProfile: any;
 
   showUserInfo: boolean = false;
   isLoggedIn = false;
@@ -91,7 +92,22 @@ throw new Error('Method not implemented.');
     });
      
    
-    
+   this.getFromSesion(); 
+  }
+
+  getFromSesion(){
+    this.userProfile = sessionStorage.getItem('userResponse');
+        console.log(this.userProfile);
+  
+        if (this.userProfile) {
+          this.parsedUserProfile = JSON.parse(this.userProfile);
+          this.firstName = this.parsedUserProfile.firstName;
+          console.log(this.parsedUserProfile);
+          console.log(this.firstName);
+        }
+        else {
+          console.log('not found userprofile')
+        }
   }
   get cp() {
     return this.pchangeForm.controls;

@@ -58,7 +58,9 @@ getFromSesion(){
       }
 }
 
-
+logout(){
+this.authService.logout();  
+}
 ngAfterViewInit(): void {
       
     
