@@ -15,7 +15,7 @@ import { UtilService } from '../../services/util.service';
 @Component({
   selector: 'app-defaultlayoutcomponent',
   standalone: true,
-  imports: [HeaderComponent, SidebarComponent, HeadermainComponent,RouterModule],
+  imports: [SidebarComponent, HeadermainComponent, RouterModule],
   templateUrl: './defaultlayoutcomponent.component.html',
   styleUrl: './defaultlayoutcomponent.component.css'
 })

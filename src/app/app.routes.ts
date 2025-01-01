@@ -13,6 +13,7 @@ import { WebdashboardComponent } from './components/webUsersComponents/webdashbo
 import { WebServicesComponent } from './components/webUsersComponents/web-services/web-services.component';
 import { TreeTypesComponent } from './components/webUsersComponents/tree-types/tree-types.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
+import { AddCoursesComponent } from './components/admin/add-courses/add-courses.component';
 
 export const routes: Routes = [  
     { path: '', redirectTo: 'homepage', pathMatch: 'full' },
@@ -46,7 +47,7 @@ export const routes: Routes = [
         children: [
           { path: 'dashboard', component: AddProductComponent },
           { path: 'addProduct', component: AddProductComponent },
-          
+          { path: 'add', component: AddCoursesComponent },
            { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
         ]
       },

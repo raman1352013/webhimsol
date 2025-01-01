@@ -1,1 +1,135 @@
 <p>add-product works!</p>
+<div class="container p-0 m-0">
+    <div class="row border-bottom">
+  
+      <h4 class="text-red">
+       Add Products
+      </h4>
+      <div class="about-wrapper">
+        <div class="container">
+          <form [formGroup]="productForm">
+            <div class="aboutform-content">
+              <h6 class="text-red mb-3">General Details</h6>
+
+
+              <div class="row input-row">
+                <div class="col-lg-2 col-md-3 input-col">
+                  <label for="courseCode" class="form-label">Course Code <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" formControlName="courseCode" id="courseCode" maxlength="100">
+                  <div *ngIf="productForm.get('courseCode')?.invalid && productForm.get('courseCode')?.touched"
+                    class="text-danger small-font">
+                    Course Code is required.
+                  </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 input-col">
+                  <label for="courseName" class="form-label">Course Name<span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="courseName" formControlName="courseName"
+                    value="New Course" maxlength="100">
+                  <div *ngIf="productForm.get('courseName')?.invalid && productForm.get('courseName')?.touched"
+                    class="text-danger small-font">
+                    Course Name is required.
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="row input-row">
+
+                
+                <!-- <div class="col-lg-2 col-md-3 input-col">
+                  <label for="courseType" class="form-label">Course Type <span class="text-danger">*</span></label>
+                  <select class="form-select" id="courseType" formControlName="courseType">
+                    <option *ngFor="let ct of courseType" [value]="ct.code">{{ ct.description }}</option>
+                  </select>
+                  <div *ngIf="productForm.get('courseType')?.invalid && productForm.get('courseType')?.touched"
+                    class="text-danger small-font">
+                    Course Type is required.
+                  </div>
+                </div> -->
+
+                <!-- <div class="col-lg-2 col-md-3 input-col">
+                  <label for="courseLevel" class="form-label">Course Level <span class="text-danger">*</span></label>
+                  <select class="form-select" id="courseLevel" formControlName="courseLevel">
+                    <option *ngFor="let cl of courseLevel" [value]="cl.code">{{ cl.description }}</option>
+                  </select>
+                  <div *ngIf="productForm.get('courseLevel')?.invalid && productForm.get('courseLevel')?.touched"
+                    class="text-danger small-font">
+                    Course Level is required.
+                  </div>
+                </div> -->
+              </div>
+              <div class="row input-row">
+
+                <div class="col-lg-3 col-md-3 input-col">
+                  <label for="courseStartDate" class="form-label">Start Date</label>
+                  <div class="d-flex align-items-center">
+                    <input id="courseStartDate" type="date" class="form-control custom-form-control me-2"
+                      formControlName="courseStartDate"  name="courseStartDate" />
+
+                  </div>
+                  <div class="text-danger small-font"
+                    *ngIf="productForm.get('courseStartDate')?.touched && productForm.get('courseStartDate')?.invalid">
+                    Start date is required.
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3 input-col">
+                  <label for="courseEndDate" class="form-label">End Date</label>
+                  <div class="d-flex align-items-center">
+                    <input id="courseEndDate" type="date" class="form-control custom-form-control me-2"
+                      formControlName="courseEndDate" name="courseEndDate" />
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <h6 class="text-danger mb-3">Course Information </h6>
+              <div class="row input-row">
+                <div class="col-lg-6 input-col">
+                  <label for="courseDescription" class="form-label">Course Description <span
+                      class="text-danger">*</span></label>
+                  <div class="editor-container">
+                    <textarea class="custom-textarea"  name="moduleDescription"
+                      placeholder="Enter course description" formControlName="description">
+                    </textarea>
+                  </div>
+                  <div *ngIf="productForm.get('description')?.invalid && productForm.get('description')?.touched"
+                    class="text-danger small-font">
+                    Course Description is required.
+                  </div>
+                </div>
+              </div>
+              <div class="row input-row">
+                <div class="col-lg-6 input-col">
+                  <label for="courseDescription" class="form-label">Excerpt <span class="text-danger">*</span></label>
+                  <div class="editor-container">
+                    <textarea class="custom-textarea"  name="courseDescription"
+                      placeholder="Enter course description" formControlName="shortDesc">
+                    </textarea>
+                  </div>
+                  <div *ngIf="productForm.get('shortDesc')?.invalid && productForm.get('shortDesc')?.touched"
+                    class="text-danger small-font">
+                    Excerpt is required.
+                  </div>
+
+                </div>
+              </div>
+              <div class="input-row row">
+                <div class="col-lg-3 col-md-6 input-col upload-width">
+                  <label for="formFileMultiple" class="form-label">Featured Image</label>
+                  <input class="form-control" type="file" id="formFileMultiple" multiple>
+                  <p class="sub-input-text">Size: 700 x 430 pixels | File Support: jpg, jpeg, png</p>
+                </div>
+              </div>
+            </div>
+            <div class="input-row sendbtn-row">
+              <button class="btn red-btn" tabindex="0" >Save</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>

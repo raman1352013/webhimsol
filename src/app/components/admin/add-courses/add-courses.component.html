@@ -1,0 +1,707 @@
+<div class="container p-0 m-0">
+  <div class="row border-bottom">
+
+    <h4 class="text-red">
+      {{ courseId ? 'Edit Course: ' + course.courseName : 'Add Course' }}
+    </h4>
+
+
+    <div class="table-btns d-flex justify-content-end mb-3">
+      <!-- <select class="py-0 " id="courseList" [(ngModel)]="courseList" (ngModelChange)="onCourseChange($event.target.value)" >
+        <option *ngFor="let course of courseList" [value]="course.courseCode">{{ course.courseCode }}</option>
+      </select> -->
+      <select class="py-0" id="courseList" [(ngModel)]="selectedCourseCode" (ngModelChange)="onCourseChange($event)">
+        <option *ngFor="let cl of courseDropDownList" [value]="cl.id">
+          {{ cl.courseCode }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Tabs Section -->
+  <ul class="nav nav-tabs" id="courseTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="about-tab" data-bs-toggle="tab" data-bs-target="#about" type="button"
+        role="tab" aria-controls="about" aria-selected="true">About</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="curriculum-tab" data-bs-toggle="tab" data-bs-target="#curriculum" type="button"
+        role="tab" aria-controls="curriculum" aria-selected="false" [disabled]="!courseId"
+        (click)="getModule(courseId)">Curriculum</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="pricing-tab" data-bs-toggle="tab" data-bs-target="#pricing" type="button" role="tab"
+        aria-controls="pricing" aria-selected="false" [disabled]="!courseId">Pricing</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="publish-tab" data-bs-toggle="tab" data-bs-target="#publish" type="button" role="tab"
+        aria-controls="publish" aria-selected="false">Publish</button>
+    </li>
+  </ul>
+
+  <!-- Tab Content -->
+  <div class="tab-content" id="courseTabContent">
+    <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+      <!-- About Content Here -->
+      <div class="about-wrapper">
+        <div class="container">
+          <form [formGroup]="courseForm">
+            <div class="aboutform-content">
+              <h6 class="text-red mb-3">General Details</h6>
+
+
+              <div class="row input-row">
+                <div class="col-lg-2 col-md-3 input-col">
+                  <label for="courseCode" class="form-label">Course Code <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" formControlName="courseCode" id="courseCode" maxlength="100">
+                  <div *ngIf="courseForm.get('courseCode')?.invalid && courseForm.get('courseCode')?.touched"
+                    class="text-danger small-font">
+                    Course Code is required.
+                  </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 input-col">
+                  <label for="courseName" class="form-label">Course Name<span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="courseName" formControlName="courseName"
+                    value="New Course" maxlength="100">
+                  <div *ngIf="courseForm.get('courseName')?.invalid && courseForm.get('courseName')?.touched"
+                    class="text-danger small-font">
+                    Course Name is required.
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="row input-row">
+
+                <div class="col-lg-2 col-md-3 input-col">
+                  <label for="courseInstructor" class="form-label">Course Instructor <span
+                      class="text-danger">*</span></label>
+                  <select class="form-select" formControlName="courseInstructor">
+                    <option *ngFor="let instructor of instructorList" [value]="instructor.userId">
+                      {{ instructor.userProfile?.firstName }}
+                    </option>
+                  </select>
+                  <div
+                    *ngIf="courseForm.get('courseInstructor')?.invalid && courseForm.get('courseInstructor')?.touched"
+                    class="text-danger small-font">
+                    Course Instructor is required.
+                  </div>
+                </div>
+                <div class="col-lg-2 col-md-3 input-col">
+                  <label for="courseType" class="form-label">Course Type <span class="text-danger">*</span></label>
+                  <select class="form-select" id="courseType" formControlName="courseType">
+                    <option *ngFor="let ct of courseType" [value]="ct.code">{{ ct.description }}</option>
+                  </select>
+                  <div *ngIf="courseForm.get('courseType')?.invalid && courseForm.get('courseType')?.touched"
+                    class="text-danger small-font">
+                    Course Type is required.
+                  </div>
+                </div>
+
+                <div class="col-lg-2 col-md-3 input-col">
+                  <label for="courseLevel" class="form-label">Course Level <span class="text-danger">*</span></label>
+                  <select class="form-select" id="courseLevel" formControlName="courseLevel">
+                    <option *ngFor="let cl of courseLevel" [value]="cl.code">{{ cl.description }}</option>
+                  </select>
+                  <div *ngIf="courseForm.get('courseLevel')?.invalid && courseForm.get('courseLevel')?.touched"
+                    class="text-danger small-font">
+                    Course Level is required.
+                  </div>
+                </div>
+              </div>
+              <div class="row input-row">
+
+                <div class="col-lg-3 col-md-3 input-col">
+                  <label for="courseStartDate" class="form-label">Start Date</label>
+                  <div class="d-flex align-items-center">
+                    <input id="courseStartDate" type="date" class="form-control custom-form-control me-2"
+                      formControlName="courseStartDate" [min]="minDate" name="courseStartDate" />
+
+                  </div>
+                  <div class="text-danger small-font"
+                    *ngIf="courseForm.get('courseStartDate')?.touched && courseForm.get('courseStartDate')?.invalid">
+                    Start date is required.
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-3 input-col">
+                  <label for="courseEndDate" class="form-label">End Date</label>
+                  <div class="d-flex align-items-center">
+                    <input id="courseEndDate" type="date" class="form-control custom-form-control me-2"
+                      formControlName="courseEndDate" [min]="minDate" name="courseEndDate" />
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <h6 class="text-danger mb-3">Course Information </h6>
+              <div class="row input-row">
+                <div class="col-lg-6 input-col">
+                  <label for="courseDescription" class="form-label">Course Description <span
+                      class="text-danger">*</span></label>
+                  <div class="editor-container">
+                    <textarea class="custom-textarea"  name="moduleDescription"
+                      placeholder="Enter course description" formControlName="description">
+                    </textarea>
+                  </div>
+                  <div *ngIf="courseForm.get('description')?.invalid && courseForm.get('description')?.touched"
+                    class="text-danger small-font">
+                    Course Description is required.
+                  </div>
+                </div>
+              </div>
+              <div class="row input-row">
+                <div class="col-lg-6 input-col">
+                  <label for="courseDescription" class="form-label">Excerpt <span class="text-danger">*</span></label>
+                  <div class="editor-container">
+                    <textarea class="custom-textarea"  name="courseDescription"
+                      placeholder="Enter course description" formControlName="shortDesc">
+                    </textarea>
+                  </div>
+                  <div *ngIf="courseForm.get('shortDesc')?.invalid && courseForm.get('shortDesc')?.touched"
+                    class="text-danger small-font">
+                    Excerpt is required.
+                  </div>
+
+                </div>
+              </div>
+              <div class="input-row row">
+                <div class="col-lg-3 col-md-6 input-col upload-width">
+                  <label for="formFileMultiple" class="form-label">Featured Image</label>
+                  <input class="form-control" type="file" id="formFileMultiple" multiple>
+                  <p class="sub-input-text">Size: 700 x 430 pixels | File Support: jpg, jpeg, png</p>
+                </div>
+              </div>
+            </div>
+            <div class="input-row sendbtn-row">
+              <button class="btn red-btn" tabindex="0" (click)="saveCourse()">Save</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="tab-pane fade" id="curriculum" role="tabpanel" aria-labelledby="curriculum-tab">
+      <div class="curriculum-wrapper">
+        <div class="row">
+          <div class="col-md-4 px-0">
+            <div class="curriculum-sidebar">
+              <div class="modules-wrap">
+
+                <div class="m-contentwrap">
+                  <div *ngIf="curriculumModules.length==0" class="text-center mt-5"> Add Module to the Course.</div>
+                  <div *ngFor="let module of curriculumModules" class="custom-module">
+                    <div class="custom-module-header d-flex justify-content-between">
+                      <h6 class="text-red pointer" (click)="editModule(module)">{{ module.name }}</h6>
+                      <!-- <a href="#">
+                          <span class="badge draft-btn d-flex align-items-center justify-content-between">{{ module.status }} <i class="fa fa-angle-down"></i></span>
+                        </a> -->
+                      <span class=" d-flex flex-column justify-content-center align-items-center">
+                        <a (click)="toggleStatusDropdown(module)">
+                          <span class="badge draft-btn d-flex align-items-center justify-content-between">
+                            {{ module.status }}
+                            <i class="fa"
+                              [ngClass]="{ 'fa-angle-down': module.isStatusDropdownOpen, 'fa-angle-up': !module.isStatusDropdownOpen }"></i>
+                          </span>
+                        </a>
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"
+                            [checked]="module.status == 'ACTIVE'" [title]="
+                            module.status === 'ACTIVE' ? 'Deactivate Module' : 'Activate Module'
+                          " (click)="
+                            changeStatus( module )
+                          " />
+                        </div>
+                      </span>
+                    </div>
+                    <div class="module-content " *ngIf="module.isStatusDropdownOpen">
+                      <div *ngFor="let lesson of module.lessons" class="lesson-item border p-2 rounded">
+                        <!-- Lesson Header -->
+
+                        <span class="lesson-head d-flex align-items-center justify-content-between pointer">
+                          <span (click)="showLessonForm(module,lesson) ">{{ lesson.name }}</span>
+                          <span class="d-flex flex-column justify-content-center align-items-center">
+                            <span (click)="toggleLessonContent(lesson)"><i class="fa"
+                              [ngClass]="{ 'fa-angle-down': lesson.isVisible, 'fa-angle-up': !lesson.isVisible }"></i></span>
+                              <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"
+                                  [checked]="lesson.status == 'ACTIVE'" [title]="
+                                  lesson.status === 'ACTIVE' ? 'Deactivate Lesson' : 'Activate Lesson'
+                                " (click)="
+                                  changeLessonStatus(module,lesson )
+                                " />
+                              </div>
+                        </span>
+                          </span>
+                         
+                        <!-- (click)="addEditLeson(module,lesson) " -->
+
+                        <!-- Lesson Content -->
+                        <div class="lesson-content " *ngIf="lesson.isVisible">
+                          <p class="sub-para my-0 d-flex align-items-center" *ngFor="let content of lesson.contents"> 
+                            <img src="./assets/images/video-icon.png" class="me-2" alt="Video Icon" />
+                            <span>
+                              <span (click)="showEditLessonContent(module,lesson,content) ">{{ content.title }} ({{content.startTime | date: 'dd/MM/yyyy'}})({{content.duration}}) 
+                              </span>
+                              <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked"
+                                  [checked]="content.status == 'ACTIVE'" [title]="
+                                  content.status === 'ACTIVE' ? 'Deactivate Content' : 'Activate Content'
+                                " (click)="
+                                  changeContentStatus(lesson,content)
+                                " />
+                              </div>
+                              
+                            </span>
+                            
+                              
+                          
+                          </p>
+                          <div class="btns-wrap d-flex justify-content-between">
+                            <button class="btn red-btn border-redbtn" (click)="showAddLessonContent(module, lesson)">
+                              + Add Content
+                            </button>
+                          </div>
+
+                        </div>
+
+                      </div>
+
+
+                      <!-- <div *ngFor="let lesson of module.lessons" class="lesson-item">
+                        <span class="lesson-head d-flex align-items-center justify-content-between">{{ lesson.name }} <i class="fa fa-angle-down"></i></span>
+                        <div class="lesson-content">
+                            <p class="sub-para my-0 d-flex align-items-center" *ngFor="let lesson of lessons">
+                              <img src="./assets/images/video-icon.png"> {{ lesson.title }} ({{ lesson.type }})
+                            </p>
+                          <div class="btns-wrap d-flex justify-content-between">
+                            <button class="btn red-btn border-redbtn"  (click)="showAddLessonContent(module,lesson)">+ Add Content</button>
+                            
+                          </div>
+                        </div>
+                      </div> -->
+                      <div class="btns-wrap d-flex justify-content-between">
+                        <button class="btn red-btn border-redbtn" (click)="showLessonForm(module)">+ Add Lesson</button>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="module-btn-wrap">
+                  <button class="btn btn-add-module red-btn" (click)="showAddModule()">+ Add Module</button>
+                </div>
+
+
+                <!-- <div class="custom-module">
+                  <div class="custom-module-header d-flex justify-content-between">
+                    <span>Module 1</span>
+                    <span class="badge bg-secondary">Draft</span>
+                  </div>
+                  <div class="mb-2">Lesson 1</div>
+                  <div class="btns-wrap d-flex justify-content-between">
+                    <button class="btn btn-outline-danger btn-sm">+ Add Lesson</button>
+                    <button class="btn btn-outline-secondary btn-sm">Copy Lesson</button>
+                  </div>
+                </div>
+                
+                <div class="custom-module">
+                  <div class="custom-module-header d-flex justify-content-between">
+                    <span>Module 1</span>
+                    <span class="badge bg-secondary">Draft</span>
+                  </div>
+                  <div class="mb-2">Lesson 1</div>
+                  <div class="btns-wrap d-flex justify-content-between">
+                    <button class="btn btn-outline-danger btn-sm">+ Add Lesson</button>
+                    <button class="btn btn-outline-secondary btn-sm">Copy Lesson</button>
+                  </div>
+                </div>
+          
+                
+                <div class="custom-module">
+                  <div class="custom-module-header d-flex justify-content-between">
+                    <span>Module 2</span>
+                    <span class="badge bg-secondary">Draft</span>
+                  </div>
+                  <div class="mb-2">Lesson 1</div>
+                  <button class="btn btn-outline-danger btn-sm">+ Add Lesson</button>
+                  <button class="btn btn-outline-secondary btn-sm">Copy Lesson</button>
+                </div> -->
+              </div>
+              <!-- <button class="btn btn-add-module">+ Add Module</button> -->
+            </div>
+          </div>
+
+          <div class="col-md-4" *ngIf="isAddModuleVisible">
+            <div class="c-tabwraper">
+              <h5 class="text-red">{{ isEditMode ? 'Edit Module' : 'Add New Module' }}</h5>
+              <form [formGroup]="moduleForm">
+
+                <div class="input-row">
+                  <label for="moduleName" class="form-label">Module Name <span class="text-danger">*</span></label>
+                  <input type="text" id="moduleName" class="form-control custom-form-control"
+                    formControlName="newModuleName" maxlength="100" placeholder="Enter module name">
+
+                  <div *ngIf="moduleForm.get('newModuleName')?.invalid && moduleForm.get('newModuleName')?.touched"
+                    class="text-danger small-font">
+                    <div *ngIf="moduleForm.get('newModuleName')?.hasError('invalidCharacters')">
+                      Module name is Required .Only alphabets, digits, spaces, '-', '/', and '.' are allowed.
+                    </div>
+                  </div>
+                </div>
+                <div class="input-row">
+                  <label for="moduleDescription" class="form-label">Description <span
+                      class="text-danger">*</span></label>
+                  <div class="editor-container">
+                    <textarea class="custom-textarea" formControlName="moduleDescription"
+                      name="moduleDescription"  name="moduleDescription"
+                      placeholder="Enter module description" style="width:100%">
+                    </textarea>
+                  </div>
+                  <div
+                    *ngIf="moduleForm.get('moduleDescription')?.invalid && moduleForm.get('moduleDescription')?.touched"
+                    class="text-danger small-font">
+                    Module Description is required.
+                  </div>
+                </div>
+                <div class="content-form-btns">
+                  <button type="button" class="btn btn-save-module me-2" (click)="addNewModule()">
+                    {{ isEditMode ? 'Update' : 'Save' }}</button>
+                  <button type="button" class="btn btn-cancel-module" (click)="cancleClicked()">Cancel</button>
+                </div>
+              </form>
+
+
+            </div>
+          </div>
+          <div class="col-md-4" *ngIf="isAddLessonVisible">
+            <div class="c-tabwraper">
+              <h5 class="text-red">{{ chosenModule?.name }} : {{ isEditingLesson ? 'Edit' : 'Add New' }} Lesson
+                {{currentLesson?.name}}</h5>
+              <form [formGroup]="lessonForm">
+                <div class="input-row">
+                  <label for="newLessonName1" class="form-label">Lesson Name <span class="text-danger">*</span></label>
+                  <input type="text" id="newLessonName1" class="form-control custom-form-control"
+                    formControlName="newLessonName1" maxlength="100" name="newLessonName" placeholder="Enter lesson name">
+                  <div *ngIf="lessonForm.get('newModuleName')?.invalid && lessonForm.get('newModuleName')?.touched"
+                    class="text-danger small-font">
+
+                    <div *ngIf="lessonForm.get('newModuleName')?.hasError('invalidCharacters')">
+                      Lesson Name is required.Only alphabets, digits, spaces, '-', '/', and '.' are allowed.
+                    </div>
+                  </div>
+                </div>
+                <div class="input-row">
+                  <label for="lessonDescription" class="form-label">Description <span
+                      class="text-danger">*</span></label>
+                  <div class="editor-container">
+                    <textarea class="custom-textarea" formControlName="lessonDescription"
+                      name="lessonDescription"  name="lessonDescription"
+                      placeholder="Enter lesson description" style="width:100%">
+                    </textarea>
+                  </div>
+                  <div
+                    *ngIf="lessonForm.get('lessonDescription')?.invalid && lessonForm.get('lessonDescription')?.touched"
+                    class="text-danger small-font">
+                    Lesson Description is required.
+                  </div>
+                </div>
+                <div class="content-form-btns">
+                  <button type="button" class="btn btn-save-module me-2" (click)="addNewLesson(chosenModule )">
+                    {{ isEditingLesson ? 'Update' : 'Save' }}</button>
+                  <button type="button" class="btn btn-cancel-module" (click)="cancleClicked()">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-md-6" *ngIf="isAddLessonContentVisible">
+            <div class="c-tabwraper">
+              <h5 class="text-red">{{ chosenModule.name }} : {{chosenLesson.name}} </h5>
+              <form [formGroup]="contentForm">
+                <!-- Content Type Dropdown -->
+                <div class="input-row row">
+                  <div class="col-md-6 input-col">
+                    <label for="contentType" class="form-label">Content Type </label>
+                    <select id="contentType" class="form-control custom-form-control" formControlName="contentType"
+                      name="contentType" (change)="contentType = contentForm.value.contentType">
+                      <option value="Self Learning">Self Learning</option>
+                      <option value="Online Session">Online Session</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <!-- Design for Self Learning -->
+                  <div *ngIf="contentType === 'Self Learning'">
+                    <div class="input-row row">
+                      <!-- Title Input -->
+                      <div class="col-md-6 input-col">
+                        <label for="contentTitle" class="form-label">Title</label>
+                        <input type="text" id="contentTitle" class="form-control custom-form-control"
+                          formControlName="contentTitle" maxlength="100" name="contentTitle"
+                          placeholder="Enter title for the content" />
+                        <div class="text-danger"
+                          *ngIf="contentForm.get('contentTitle')?.touched && contentForm.get('contentTitle')?.invalid">
+                          Title is required and must be at least 3 characters.
+                        </div>
+                      </div>
+
+                      <!-- File Type Dropdown -->
+                      <div class="col-md-6 input-col">
+                        <label for="fileType" class="form-label">File Type</label>
+                        <select id="fileType" class="form-control custom-form-control" formControlName="fileType"
+                          name="fileType">
+                          <option value="Video">Video</option>
+                          <option value="PDF">PDF</option>
+                        </select>
+                        <div class="text-danger"
+                          *ngIf="contentForm.get('fileType')?.touched && contentForm.get('fileType')?.invalid">
+                          File type is required.
+                        </div>
+                      </div>
+                    </div>
+                    <!-- File Upload Section -->
+                    <div class="row input-row">
+                      <div class="col-md-12 input-col">
+                        <label class="form-label">Upload Content</label>
+                        <div class="fieldupload-wrap d-flex align-items-center justify-content-between border">
+                          <div class="upload-rule px-2">
+                            <span *ngIf="!selectedFile">No File Selected</span>
+                            <span *ngIf="selectedFile">{{ selectedFile.name }}</span>
+                          </div>
+                          <button type="button" class="btn btn-outline-danger" (click)="triggerFileInput()">
+                            Upload Video
+                          </button>
+                          <input type="file" id="uploadFile" class="d-none" accept=".mp4,.pdf" #fileInput
+                            (change)="onFileSelect($event)" />
+                        </div>
+                        <p class="sub-input-text">Size: Upto 1GB, File Support: MP4</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Design for Online Session -->
+                <div *ngIf="contentType === 'Online Session'">
+                  <div class="row input-row">
+                    <div class="col-md-12 input-col">
+                      <label for="sessionTitle" class="form-label">Session Title</label>
+                      <input type="text" id="sessionTitle" class="form-control custom-form-control"
+                        formControlName="sessionTitle"  maxlength="100" name="sessionTitle" placeholder="Session title" />
+                      <div class="text-danger"
+                        *ngIf="contentForm.get('sessionTitle')?.touched && contentForm.get('sessionTitle')?.invalid">
+                        Session title is required and must be at least 3 characters.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row input-row align-items-end">
+                    <!-- Schedule Date and Time -->
+                    <div class="col-md-5 input-col">
+                      <label for="startDate" class="form-label">Start Date</label>
+                      <div class="d-flex align-items-center">
+                        <input id="startDate" type="date" class="form-control custom-form-control me-2"
+                          formControlName="startDate" [min]="minDate" name="startDate" />
+
+                      </div>
+                      <div class="text-danger"
+                        *ngIf="contentForm.get('startDate')?.touched && contentForm.get('startDate')?.invalid">
+                        Start date is required.
+                      </div>
+                    </div>
+                    <span class="px-2 w-auto schedule-icon"> > </span>
+                    <div class="col-md-5 input-col">
+                      <label for="duration" class="form-label">Duration</label>
+                      <div class="d-flex align-items-center">
+                        <input id="duration" type="number" class="form-control custom-form-control me-2"
+                          formControlName="duration" name="duration" />
+
+                      </div>
+                      <div class="text-danger"
+                        *ngIf="contentForm.get('duration')?.touched && contentForm.get('duration')?.invalid">
+                        Duration is required.
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row input-row">
+                    <div class="col-md-12 input-col">
+                      <label for="details" class="form-label">Details about session</label>
+                      <textarea id="details" class="form-control custom-form-control" formControlName="sessionDetails"
+                        name="sessionDetails" maxlength="10000" placeholder="Add details about session to be scheduled"></textarea>
+                      <div class="text-danger"
+                        *ngIf="contentForm.get('sessionDetails')?.touched && contentForm.get('sessionDetails')?.invalid">
+                        Session details are required and must be at least 5 characters.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+                <!-- Save and Cancel Buttons -->
+                <div class="content-form-btns mt-1">
+                  <button type="button" class="btn btn-save-module me-2"
+                    (click)="addNewContent(chosenModule,chosenLesson)">
+                    Save
+                  </button>
+                  <button type="button" class="btn btn-cancel-module" (click)="cancleClicked()">
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- <div class="tab-pane fade pricing-tabContent" id="pricing" role="tabpanel" aria-labelledby="pricing-tab">
+      <div class="container">
+        <h6 class="text-red my-0">Course enrolment pricing options</h6>
+        <div class="input-row price-radio-row ">
+          <div class="col-md-4 input-col">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="pricingOptions" id="freeOption" value="free" />
+              <label class="form-check-label" for="freeOption">Free</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="pricingOptions" id="oneTimeOption" value="one-time" />
+              <label class="form-check-label" for="oneTimeOption">One Time</label>
+            </div>
+          </div>
+        </div>
+        <div class="row input-row">
+          <div class="col-md-4 input-col">
+              <label for="actualPrice" class="form-label">Actual Price</label>
+              <div class="input-group">
+                <span class="input-group-text">INR</span>
+                <input type="number" id="actualPrice" class="form-control" placeholder="Enter amount" />
+              </div>
+          </div>
+        </div>
+        <div class="row input-row">
+          <div class="col-md-4 input-col">
+              <label for="sellingPrice" class="form-label">Selling Price</label>
+              <div class="input-group">
+                <span class="input-group-text">INR</span>
+                <input type="number" id="sellingPrice" class="form-control" placeholder="Enter amount" />
+              </div>
+          </div>
+        </div>
+        <div class="row input-row">
+          <div class="input-col col-md-4">
+            <label for="enrollmentDuration" class="form-label">Enrollment Duration</label>
+            <div class="input-group">
+              <input type="number" id="enrollmentDuration" class="form-control" placeholder="Enter duration" />
+              <span class="input-group-text">Days</span>
+            </div>
+          </div>
+        </div>
+        <div class="pricing-btns d-flex justify-content-start">
+          <button type="button" class="btn btn-danger me-2">Save</button>
+          <button type="button" class="btn btn-outline-danger" (click)="cancleClicked()">Cancel</button>
+        </div>
+      </div>
+
+
+      <div class="tab-pane fade" id="publish" role="tabpanel" aria-labelledby="publish-tab">
+        <p>publish design here</p>
+      </div>
+    </div> -->
+    <div class="tab-pane fade pricing-tabContent" id="pricing" role="tabpanel" aria-labelledby="pricing-tab">
+      <div class="container">
+        <h6 class="text-red my-0">Course enrolment pricing options</h6>
+        <form [formGroup]="pricingForm">
+          <div class="input-row time-radio">
+
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="freeOption" formControlName="pricingOption"
+                value="free" />
+              <label class="form-check-label" for="freeOption">Free</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="oneTimeOption" formControlName="pricingOption"
+                value="one-time" />
+              <label class="form-check-label" for="oneTimeOption">One Time</label>
+            </div>
+
+
+          </div>
+
+
+
+          <div *ngIf="!isFree">
+            <div class="row input-row">
+              <div class="col-md-4 input-col">
+                <label for="actualPrice" class="form-label">Actual Price</label>
+                <div class="input-group">
+                  <span class="input-group-text">INR</span>
+                  <input type="number" id="actualPrice" class="form-control" maxlength="10"formControlName="actualPrice" />
+                </div>
+                <div *ngIf="pricingForm?.get('actualPrice')?.invalid && pricingForm?.get('actualPrice')?.touched"
+                  class="text-danger">
+                  Actual Price is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row input-row">
+              <div class="col-md-4 input-col">
+                <label for="sellingPrice" class="form-label">Selling Price</label>
+                <div class="input-group">
+                  <span class="input-group-text">INR</span>
+                  <input type="number" id="sellingPrice" class="form-control" maxlength="10" formControlName="sellingPrice" />
+                </div>
+                <div *ngIf="pricingForm?.get('sellingPrice')?.invalid && pricingForm?.get('sellingPrice')?.touched"
+                  class="text-danger">
+                  Selling Price is required.
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="row input-row">
+              <div class="col-md-4 input-col">
+                <label for="gst" class="form-label">GST (%)</label>
+                <div class="input-group">
+                  <input type="number" id="gst" class="form-control" formControlName="gst" readonly />
+
+                </div>
+
+              </div>
+            </div> -->
+          </div>
+
+          <div class="row input-row">
+            <div class="input-col col-md-4">
+              <label for="enrollmentDuration" class="form-label">Enrollment Duration</label>
+              <div class="input-group">
+                <input type="number" id="enrollmentDuration"  maxlength="10" class="form-control"
+                  formControlName="enrollmentDuration" />
+                <span class="input-group-text">Days</span>
+              </div>
+              <div
+                *ngIf="pricingForm?.get('enrollmentDuration')?.invalid && pricingForm?.get('enrollmentDuration')?.touched"
+                class="text-danger">
+                Enrollment Duration is required.
+              </div>
+            </div>
+          </div>
+
+          <div class="pricing-btns d-flex justify-content-start">
+            <button type="button" class="btn btn-danger me-2" (click)="addPrice()">Save</button>
+            <button type="button" class="btn btn-outline-danger" (click)="priceCancelClicked()">Cancel</button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+  </div>
