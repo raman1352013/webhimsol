@@ -1,10 +1,25 @@
 /* Hero Section */
+/* Hero Section */
 .hero {
     height: 100vh;
-    background-image: url('https://freestocks.org/fs/wp-content/uploads/2023/09/inside_of_a_temperate_mixed_forest-1024x683.jpg'); 
+    background-image: url('../../../../assets/header (2).jpg');
     background-size: cover;
     background-position: center;
     position: relative;
+    animation: zoomInOut 10s ease-in-out infinite; /* Adding animation */
+}
+
+/* Zoom In and Out Animation */
+@keyframes zoomInOut {
+    0% {
+        transform: scale(1); /* Initial state */
+    }
+    50% {
+        transform: scale(1.1); /* Zoomed in */
+    }
+    100% {
+        transform: scale(1); /* Zoom out back to normal */
+    }
 }
 
 .hero-content {

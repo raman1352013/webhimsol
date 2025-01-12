@@ -1,33 +1,33 @@
-.about-section { background: #f8f8f8; }
-.aboutcol-row { margin-top: 10px; }
+/* Image Below Text Style */
 .about-text img {
-    width: 100%;
-    max-width: 310px;
-    margin: auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
     display: block;
+    margin: 0 auto;
 }
-.about-text {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-.test-left { text-align: right; }
-.text-point h3 { margin-bottom: 15px; }
 
-/*- Media Query start -*/
-@media only screen and (max-width: 2000px){
-    .about-text { gap: 30px; }
-
+.about-text img:hover {
+    transform: scale(1.05);
 }
-@media only screen and (max-width: 992px){
-    .about-text { gap: 10px; }
-    .text-point h3 { margin-bottom: 10px; }
-    .aboutcol-row { margin-top: 0; }
-    .about-section .sec-head p { margin-bottom: 20px; }
 
+/* Adjustments for text under the image */
+.text-point {
+    margin-top: 30px; /* Space between image and text */
 }
-@media only screen and (max-width: 768px){
-    .about-text { text-align: center !important; gap: 0; }
-    .about-text img { margin-top: -5px; margin-bottom: 20px; }
-    
+
+.text-point h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #34c759;
+}
+
+.text-point p {
+    font-size: 1.1rem;
+    color: #d1d1d1;
+    line-height: 1.6;
+    margin-bottom: 30px; /* Adds space between the text sections */
 }

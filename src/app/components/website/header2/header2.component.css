@@ -1,134 +1,16 @@
-/* General Styling */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.custom-navbar {
+    background-color: black; /* Make the background transparent */
+    box-shadow: none; /* Optional: Remove the box shadow if needed */
 }
 
-body {
-    font-family: Arial, sans-serif;
+.custom-navbar .navbar-nav .nav-link {
+    color: white !important; /* Ensures nav links are visible on a transparent background */
 }
 
-/* Navbar Styling */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: rgba(14, 14, 14, 0.7); 
-    position: absolute;
-    width: 100%;
-    top: 0;
-    z-index: 10;
+.custom-navbar .navbar-toggler-icon {
+    background-color: black /* Makes the toggler icon visible on transparent background */
 }
 
-.navbar .logo img {
-    width: 70px;
-
+.custom-navbar .navbar-brand img {
+    filter: brightness(0) invert(1); /* Optional: Invert the logo if needed for better visibility */
 }
-
-.nav-item {
-    list-style: none;
-    display: flex;
-    gap: 40px;
-    margin-inline:20px;
-}
-
-.nav-links li a {
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 10px 20px;
-}
-
-.nav-link{
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    padding: 10px 20px;
-}
-
-.navbar .nav-links li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-}
-
-.navbar .social-links {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.navbar .social-links a {
-    color: white;
-    font-size: 18px;
-    padding: 5px;
-    text-decoration: none;
-}
-
-.navbar .contribute-btn {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-transform: uppercase;
-    color: white;
-}
-
-/* Hero Section */
-.hero {
-    height: 100vh;
-    background-image: url('https://freestocks.org/fs/wp-content/uploads/2023/09/inside_of_a_temperate_mixed_forest-1024x683.jpg'); 
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-
-.hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-}
-
-.hero-content h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-}
-
-.explore-btn {
-    background-color: white;
-    color: green;
-    padding: 15px 30px;
-    font-size: 18px;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-.explore-btn:hover {
-    background-color: green;
-    color: white;
-}
-
-.modal-dialog {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto; /* Optional: Forces horizontal centering */
-  }
-
-  .details-list li {
-    color: red; 
-  }
-  
-  .details-list li.valid {
-    color: green;
-  }
-  
-  .details-list li.invalid {
-    color: red;
-  }
-  .nav-link{
-    cursor: pointer;
-  }

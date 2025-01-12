@@ -1,0 +1,55 @@
+#about-us {
+    background-color: #343a40; /* Dark background */
+    color: white; /* Text color */
+    color: white;
+}
+
+#about-us .img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px; /* Rounded corners */
+    color: white;
+}
+
+#about-us h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+}
+
+#about-us h6 {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: white;
+}
+
+#about-us p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: white;
+}
+
+#about-us .btn {
+    padding: 12px 30px;
+    font-size: 1.125rem;
+    border-radius: 25px;
+    text-transform: uppercase;
+}
+
+#about-us .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+#about-us .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.shadow-sm {
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
