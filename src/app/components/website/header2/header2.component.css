@@ -1,5 +1,5 @@
 .custom-navbar {
-    background-color: black; /* Make the background transparent */
+    background-color: transparent; /* Make the background transparent */
     box-shadow: none; /* Optional: Remove the box shadow if needed */
 }
 
@@ -13,4 +13,17 @@
 
 .custom-navbar .navbar-brand img {
     filter: brightness(0) invert(1); /* Optional: Invert the logo if needed for better visibility */
+}
+navbar{
+    z-index: 999;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    z-index: 10;
 }
