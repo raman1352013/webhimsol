@@ -5,7 +5,7 @@
     background-image: url('../../../../assets/header (2).jpg');
     background-size: cover;
     background-position: center;
-    position: relative;
+    /* position: relative; */
     animation: zoomInOut 10s ease-in-out infinite; /* Adding animation */
 }
 
